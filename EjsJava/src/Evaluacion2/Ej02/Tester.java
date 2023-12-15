@@ -14,12 +14,11 @@ public class Tester {
         String apellido2;
         System.out.println("Dime tu segundo apellido");
         apellido2=scanner.nextLine();
+        OperacionesString.iniciales(nombre,apellido1,apellido2);
 
+        String oracion;
+        System.out.println("Escribe una frase");
+        oracion=scanner.nextLine();
 
-        OperacionesString.iniciales(nombre);
-        OperacionesString.iniciales1(apellido1);
-        OperacionesString.iniciales2(apellido2);
-
-        OperacionesString.mayus(nombre,apellido1);
     }
 }

@@ -5,7 +5,6 @@ import java.util.Arrays;
 public class Tester {
     public static void main(String[] args) {
         int numero[]=new int[10];
-        int copia []=new int[10];
         OperacionesArray.cargar(numero);
         System.out.println("Array Inicial");
         OperacionesArray.mostrar(numero);
