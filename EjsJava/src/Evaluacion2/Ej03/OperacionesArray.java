@@ -36,9 +36,9 @@ public class OperacionesArray {
         return suma/10;
     }
 
-    public static void invertir(int copia[]){
+    public static void invertir(int numero[]){
         for (int i = 9; i >-1 ; i--) {
-            System.out.print(copia[i]+" ");
+            System.out.print(numero[i]+" ");
         }
     }
 
