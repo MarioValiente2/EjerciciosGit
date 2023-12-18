@@ -1,9 +1,11 @@
 package Evaluacion2.Ej03;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Tester {
     public static void main(String[] args) {
+        Scanner scanner=new Scanner(System.in);
         int numero[]=new int[10];
         OperacionesArray.cargar(numero);
         System.out.println("Array Inicial");
@@ -19,7 +21,9 @@ public class Tester {
         double media=OperacionesArray.media(numero);
         System.out.println("La media es: "+media);
         System.out.println();
-
+        System.out.println("Que numero quieres saber si esta");
+        int num= scanner.nextInt();
+        OperacionesArray.estar(numero, num);
 
     }
 

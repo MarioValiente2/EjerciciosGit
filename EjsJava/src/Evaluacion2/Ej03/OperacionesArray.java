@@ -41,5 +41,19 @@ public class OperacionesArray {
             System.out.print(numero[i]+" ");
         }
     }
+    public  static  void estar (int numero[],int num){
+        boolean si=false;
+        int posicion=0;
+        for (int i = 0; i < numero.length; i++) {
+           if (num==numero[i]){
+               si=true;
+               posicion=i;
+           }
+        }
+        if (si==true){
+            System.out.println("El numero se encuantra en la posición: "+ posicion);
+        }else
+            System.out.println("El numero no esta");
+    }
 
 }
