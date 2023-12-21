@@ -21,12 +21,6 @@ public class OperacionesArray {
 
         Arrays.sort(numero);
     }
-    public static void mostrar2(int numero[]){
-        for (int i = 0; i < numero.length ; i++) {
-            System.out.print(numero[i]+" ");
-        }
-
-    }
     public static double media (int[] numero){
         double suma=0;
         for (int i = 0; i < numero.length ; i++) {

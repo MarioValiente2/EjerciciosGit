@@ -16,7 +16,7 @@ public class Tester {
         System.out.println();
         System.out.println("Array ordenado");
         OperacionesArray.ordenar(numero);
-        OperacionesArray.mostrar2(numero);
+        OperacionesArray.mostrar(numero);
         System.out.println();
         double media=OperacionesArray.media(numero);
         System.out.println("La media es: "+media);
