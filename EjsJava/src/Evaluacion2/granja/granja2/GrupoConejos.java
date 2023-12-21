@@ -14,7 +14,7 @@ public class GrupoConejos {
     }
     public void mostrar(){
         for (int i = 0; i < conejos.length; i++) {
-            System.out.println(conejos[i]+" ");
+            System.out.println(conejos[i]);
         }
     }
 }
