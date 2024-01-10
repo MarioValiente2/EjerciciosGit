@@ -16,16 +16,7 @@ public class Ej01 {
                 case 'A':
                     int numero = 0;
                     int cont = 0;
-                    int num2 = 0;
-                    int suma = 0;
-
-                    System.out.println("Introduzca numeros");
-                    do {
-                        cont = 0;
-                        numero = scanner.nextInt();
-                        num2 = numero;
-                        if (numero != 1 && numero != -1) {
-                            while (cont != 2 && num2 > 1) {
+                    
                                 if (numero % num2 == 0) {
                                     cont++;
                                 }
