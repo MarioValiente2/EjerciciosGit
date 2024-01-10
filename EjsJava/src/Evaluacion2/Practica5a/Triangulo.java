@@ -20,7 +20,6 @@ public class Triangulo {
         this.punto2= new Punto(x2= punto2.getEjeX(),y2= punto2.getEjeY());
         this.punto3= new Punto(x3= punto3.getEjeX(),y3= punto3.getEjeY());
     }
-
     public Punto getPunto1() {
         return punto1;
     }
