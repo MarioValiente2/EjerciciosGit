@@ -8,16 +8,17 @@ public class Conejo {
     private int edad;
     private int gazapos;
     private int [] zanahoriasSemana;
-    private static final String [] nombres ={"Malo","Bueno", "Quien", "Goku", "MartiMcFly"};
+    private static final String [] nombres ={"Malo","Bueno", "Perico", "Felipe Gulugulu"};
     public Conejo(){
         Random random=new Random();
         this.nombre = nombres[(int)(Math.random()*nombres.length)];
-        this.edad = random.nextInt(1,3);
-        this.gazapos= random.nextInt(1,5);
+        this.edad = random.nextInt(1,5);
+        this.gazapos= random.nextInt(1,100);
         zanahoriasSemana=new int[7];
         for (int i = 0; i < zanahoriasSemana.length ; i++) {
             zanahoriasSemana [i]= random.nextInt(1,5);
         }
+
     }
     public Conejo(String nombre,int edad, int gazapos){
         this.nombre = nombre;
@@ -30,6 +31,7 @@ public class Conejo {
         }
     }
     public String toString(){
-        return String.format("Me llamo %s, tengo %d años y tengo %d gazapos \n %s",nombre,edad,gazapos, Arrays.toString(zanahoriasSemana));
+        return String.format("Me llamo %s, tengo %d años y tengo %d gazapos \nComo muchas zanahorias %s ",nombre,edad,gazapos, Arrays.toString(zanahoriasSemana));
     }
+
 }
