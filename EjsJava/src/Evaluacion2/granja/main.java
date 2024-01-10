@@ -7,7 +7,10 @@ public class main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Conejo Aleatorio");
         Conejo random = new Conejo();
-        System.out.println(random.toString());
+        System.out.println("Cuantos conejos quieres");
+        int tamano= scanner.nextInt();
+        GrupoConejos nuevos =new GrupoConejos(tamano);
+        nuevos.mostrar();
 
         System.out.println("Introduce el nombre del conejo, la edad y el numero de gazapos de éste año");
         String nombre = scanner.nextLine();

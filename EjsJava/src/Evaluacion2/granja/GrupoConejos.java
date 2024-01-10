@@ -1,4 +1,4 @@
-package Evaluacion2.granja.granja2;
+package Evaluacion2.granja;
 
 import Evaluacion2.granja.Conejo;
 
@@ -6,8 +6,8 @@ import java.util.Random;
 
 public class GrupoConejos {
     private Conejo [] conejos;
-    public GrupoConejos(){
-        conejos=new Conejo[10];
+    public GrupoConejos(int tamano){
+        conejos=new Conejo[tamano];
         for (int i = 0; i <conejos.length ; i++) {
             conejos[i]= new Conejo();
         }

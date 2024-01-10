@@ -1,5 +1,7 @@
 package Evaluacion2.Practica5a;
 
+import java.util.Random;
+
 public class Punto {
     private double ejeX;
     private double ejeY;
@@ -12,17 +14,19 @@ public class Punto {
     public double getEjeX() {
         return ejeX;
     }
+
     public double getEjeY() {
         return ejeY;
     }
-    public Punto(){
-        this.ejeX=4;
-        this.ejeY=6;
+
+    public Punto() {
+        Random random = new Random();
+        this.ejeX = random.nextDouble(1, 10);
+        this.ejeY = random.nextDouble(1, 10);
     }
 
-    public double calcularDistanciaDesde(Punto punto,Punto punto2){
-
-        return Math.sqrt (Math.pow(punto.ejeX-punto2.ejeX,2) + Math.pow(punto.ejeY- punto2.ejeY,2));
+    public double calcularDistanciaDesde(Punto a, Punto b) {
+        return Math.sqrt(Math.pow(a.ejeX - b.ejeX, 2) + Math.pow(a.ejeY - b.ejeY, 2));
     }
 
     @Override
