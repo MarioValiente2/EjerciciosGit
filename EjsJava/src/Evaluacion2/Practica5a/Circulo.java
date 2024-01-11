@@ -18,8 +18,8 @@ public class Circulo {
         central = new Punto(x,y);
     }
 
-    public double calcularDistanciaDesde (Punto punto  ){
-        return punto.calcularDistanciaDesde(punto,central)-radio;
+    public double calcularDistanciaDesde (Punto punto){
+        return punto.calcularDistanciaDesde(central)-radio;
     }
 
     public double calcularArea (double radio) {
@@ -37,5 +37,13 @@ public class Circulo {
     }
     public Circulo(double radio) {
         this.radio = radio;
+    }
+
+    @Override
+    public String toString() {
+        return "Circulo{" +
+                "central=" + central +
+                ", radio=" + radio +
+                '}';
     }
 }

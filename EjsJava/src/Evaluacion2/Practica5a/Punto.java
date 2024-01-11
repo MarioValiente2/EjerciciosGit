@@ -25,14 +25,13 @@ public class Punto {
         this.ejeY = random.nextDouble(1, 10);
     }
 
-    public double calcularDistanciaDesde(Punto a, Punto b) {
-        return Math.sqrt(Math.pow(a.ejeX - b.ejeX, 2) + Math.pow(a.ejeY - b.ejeY, 2));
+    public double calcularDistanciaDesde(Punto a) {
+        return Math.sqrt(Math.pow(ejeX - a.ejeX, 2) + Math.pow(ejeY - a.ejeY, 2));
     }
-
     @Override
     public String toString() {
         return "Punto{" +
-                "ejeX=" + ejeX +
+                "ejeX="+ ejeX +
                 ", ejeY=" + ejeY +
                 '}';
 
