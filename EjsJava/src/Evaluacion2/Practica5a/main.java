@@ -18,5 +18,7 @@ public class main {
 
         Triangulo triangulo=new Triangulo();
         System.out.println("Distancia del triangulo: " + triangulo.calcularDistanciaDesde(punto));
+        System.out.println("Area del triangulo: "+triangulo.calcularArea(punto));
+        System.out.println("Perimetro del triangulo: "+triangulo.calcularPerimetro(punto));
     }
 }

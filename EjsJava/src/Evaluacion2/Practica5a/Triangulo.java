@@ -35,4 +35,18 @@ public class Triangulo {
     public double calcularDistanciaDesde (Punto punto){
         return punto.calcularDistanciaDesde(punto1,punto);
     }
+    public double calcularArea(Punto punto){
+        double lado1= punto1.calcularDistanciaDesde(punto1,punto2);
+        double lado2= punto1.calcularDistanciaDesde(punto2,punto3);
+        double lado3= punto1.calcularDistanciaDesde(punto3,punto1);
+        double s= (lado1+lado2+lado3)/2;
+        return Math.sqrt(s*(s-lado1)*(s-lado2)*(s-lado3));
+    }
+
+    public double calcularPerimetro(Punto punto){
+        double lado1= punto1.calcularDistanciaDesde(punto1,punto2);
+        double lado2= punto1.calcularDistanciaDesde(punto2,punto3);
+        double lado3= punto1.calcularDistanciaDesde(punto3,punto1);
+        return lado1+lado2+lado3;
+    }
 }
