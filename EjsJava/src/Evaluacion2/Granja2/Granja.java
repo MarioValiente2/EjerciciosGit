@@ -3,14 +3,16 @@ package Evaluacion2.Granja2;
 public class Granja {
     private Animal crear[];
 
-    public Granja() {
-        crear = new Animal[12];
+    public Granja(int tamano) {
+        crear = new Animal[tamano];
         for (int i = 0; i < crear.length; i++) {
-            if (i < 4) {
+            if (i%2==0) {
                 crear[i] = new Gallina();
-            } else if (i >= 4 && i < 8) {
+            } else if (i<(tamano/2)) {
                 crear[i] = new Conejo();
-            } else if (i>=8 && i<=12) {
+            } else if (i>(tamano/2)){
+                crear[i] = new Paloma();
+            }else{
                 crear[i] = new Paloma();
             }
         }

@@ -17,18 +17,22 @@ public class main {
         double peso = scanner.nextDouble();
 
         if (opcion == 1) {
+            System.out.println("Has elegido una Gallina");
             Gallina nueva = new Gallina(nombre, edad, peso);
             System.out.println(nueva.toString());
         } else if (opcion == 2) {
+            System.out.println("Has elegido un Conejo");
             Conejo nueva = new Conejo(nombre, edad, peso);
             System.out.println(nueva.toString());
         } else if (opcion == 3) {
+            System.out.println("Has elegido una Paloma");
             Paloma nueva = new Paloma(nombre, edad, peso);
             System.out.println(nueva.toString());
         }
-
-        System.out.println("Crear granja random");
-        Granja nuevo=new Granja();
+        System.out.println("Crear granja random, cuantos quieres");
+        int tamano= scanner.nextInt();
+        Granja nuevo=new Granja(tamano);
+        System.out.println("\n");
         nuevo.mostrar();
 
     }

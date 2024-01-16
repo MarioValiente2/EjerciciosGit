@@ -18,7 +18,6 @@ public abstract class Animal {
         Random random=new Random();
         this.nombre = nombres[(int)(Math.random()*nombres.length)];
         this.edad = random.nextInt(1,10);
-        this.peso= random.nextDouble(1,5);
     }
 
     public String getNombre() {
