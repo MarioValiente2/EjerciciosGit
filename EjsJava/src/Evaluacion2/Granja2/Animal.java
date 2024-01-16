@@ -1,20 +1,24 @@
 package Evaluacion2.Granja2;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public abstract class Animal {
 
     protected String nombre;
     protected int edad;
     protected double peso;
-
+    private static final String [] nombres ={"Malo","Bueno", "Perico", "Felipe Gulugulu"};
     public Animal(String nombre, int edad, double peso) {
         this.nombre = nombre;
         this.edad = edad;
         this.peso = peso;
     }
     public Animal(){
-
+        Random random=new Random();
+        this.nombre = nombres[(int)(Math.random()*nombres.length)];
+        this.edad = random.nextInt(1,10);
+        this.peso= random.nextDouble(1,5);
     }
 
     public String getNombre() {

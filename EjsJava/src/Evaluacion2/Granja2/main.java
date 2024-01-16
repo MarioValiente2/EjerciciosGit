@@ -15,16 +15,21 @@ public class main {
         String nombre = scanner.next();
         int edad = scanner.nextInt();
         double peso = scanner.nextDouble();
+
         if (opcion == 1) {
-            Gallina nueva=new Gallina(nombre,edad,peso);
+            Gallina nueva = new Gallina(nombre, edad, peso);
             System.out.println(nueva.toString());
         } else if (opcion == 2) {
-            Conejo nueva=new Conejo(nombre,edad,peso);
+            Conejo nueva = new Conejo(nombre, edad, peso);
             System.out.println(nueva.toString());
         } else if (opcion == 3) {
-            Paloma nueva=new Paloma(nombre,edad,peso);
+            Paloma nueva = new Paloma(nombre, edad, peso);
             System.out.println(nueva.toString());
         }
+
+        System.out.println("Crear granja random, cuantos animales quieres");
+        int tamano=scanner.nextInt();
+        Granja nuevo=new Granja(tamano);
 
     }
 
