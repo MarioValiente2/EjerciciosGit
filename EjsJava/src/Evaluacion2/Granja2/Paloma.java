@@ -4,11 +4,17 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Paloma extends Animal{
-    private int minpeso=1;
-    private int maxpeso=4;
+    private final int minpeso=1;
+    private final int maxpeso=3;
     private int pichones [];
     public Paloma(){
         super();
+        Random random=new Random();
+        pichones=new int[12];
+        for (int i = 0; i < pichones.length ; i++) {
+            pichones [i]=random.nextInt(1,5);
+        }
+        peso= random.nextDouble(minpeso,maxpeso);
     }
 
     public Paloma(String nombre, int edad, double peso) {

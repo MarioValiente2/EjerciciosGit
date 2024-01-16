@@ -4,9 +4,17 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Gallina extends Animal {
+    private final int minpeso=3;
+    private final int maxpeso=5;
     private int huevos [];
     public Gallina (){
         super();
+        Random random = new Random();
+        huevos=new int[7];
+        for (int i = 0; i < huevos.length ; i++) {
+            huevos [i]=random.nextInt(0,2);
+        }
+        peso= random.nextDouble(minpeso,maxpeso);
     }
 
     public Gallina(String nombre, int edad, double peso) {
