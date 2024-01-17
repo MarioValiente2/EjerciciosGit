@@ -28,7 +28,7 @@ public class Granja {
     public String calcularMedia() {
         StringBuilder medias = new StringBuilder();
         for (int i = 0; i < crear.length; i++) {
-            medias.append(crear[i]).append("\n");
+            medias.append(crear[i].toString()).append("\nLa media es: ").append(crear[i].Media()).append("\n");
         }
         return medias.toString();
     }

@@ -33,6 +33,7 @@ public class main {
         int tamano = scanner.nextInt();
         Granja nuevo = new Granja(tamano);
         nuevo.Mostrar();
+        System.out.println(nuevo.calcularMedia());
     }
 
 }

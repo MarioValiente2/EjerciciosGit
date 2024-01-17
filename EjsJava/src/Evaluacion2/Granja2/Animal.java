@@ -20,6 +20,9 @@ public abstract class Animal {
         this.nombre = nombres[(int)(Math.random()*nombres.length)];
         this.edad = random.nextInt(1,10);
     }
+    public double Media(){
+       return 0;
+    }
 
     public String getNombre() {
         return nombre;
