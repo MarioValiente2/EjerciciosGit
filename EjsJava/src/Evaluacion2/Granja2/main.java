@@ -30,11 +30,9 @@ public class main {
             System.out.println(nueva.toString());
         }
         System.out.println("Crear granja random, cuantos quieres");
-        int tamano= scanner.nextInt();
-        Granja nuevo=new Granja(tamano);
-        System.out.println("\n");
-        nuevo.mostrar();
-
+        int tamano = scanner.nextInt();
+        Granja nuevo = new Granja(tamano);
+        nuevo.Mostrar();
     }
 
 }

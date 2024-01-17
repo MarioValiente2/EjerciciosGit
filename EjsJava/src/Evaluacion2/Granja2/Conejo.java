@@ -27,8 +27,17 @@ public class Conejo extends Animal{
     }
     public String toString() {
         return super.toString() +
-                "\nNumeros de zanahorias que come cada dia" + Arrays.toString(zanahoriasSemana);
+                String.format("\nNumeros de zanahorias que come cada dia %s",Arrays.toString(zanahoriasSemana));
+                //"\nNumeros de zanahorias que come cada dia" + Arrays.toString(zanahoriasSemana) + "Media de huevos: "+ Media();
     }
 
+    public double Media(){
+        double suma=0;
+        for (int i = 0; i < zanahoriasSemana.length ; i++) {
+            int media=zanahoriasSemana[i];
+            suma=media+suma;
+        }
+        return suma/ zanahoriasSemana.length;
+    }
 
 }

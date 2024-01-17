@@ -1,5 +1,6 @@
 package Evaluacion2.Granja2;
 
+import javax.print.attribute.standard.Media;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -48,4 +49,5 @@ public abstract class Animal {
     public String toString() {
         return "Soy un/a "+getClass().getSimpleName()+String.format("\nMe llamo %s, tengo %d años y peso %.2f Kg ",nombre,edad,peso);
     }
+
 }

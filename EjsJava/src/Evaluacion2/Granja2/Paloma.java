@@ -42,7 +42,16 @@ public class Paloma extends Animal{
 
     @Override
     public String toString() {
-        return super.toString() +
-                "\nNumeros de pichones de cada mes: " + Arrays.toString(pichones);
+        return super.toString() + String.format("\nNumeros de pichones de cada mes %s",Arrays.toString(pichones));
+                //String.format("\nNumeros de pichones de cada mes: %s \nLa media es: %.2d", Arrays.toString(pichones),Media());
     }
+    public double Media(){
+        double suma=0;
+        for (int i = 0; i < pichones.length ; i++) {
+            int media=pichones[i];
+             suma=media+suma;
+        }
+        return suma/ pichones.length;
+    }
+
 }
