@@ -2,12 +2,12 @@ package Evaluacion2.Practica5b;
 
 public class Profesor {
 
-    public void ponerNotas(Alumno notas) {
+    public static void ponerNotas(Alumno notas) {
         notas.getAsig1().setCalificacion(Math.random() * 10);
         notas.getAsig2().setCalificacion(Math.random() * 10);
         notas.getAsig3().setCalificacion(Math.random() * 10);
     }
-    public double calcularMedia(Alumno notas){
+    public static double calcularMedia(Alumno notas){
         double nota1=notas.getAsig1().getCalificacion();
         double nota2=notas.getAsig2().getCalificacion();
         double nota3=notas.getAsig3().getCalificacion();

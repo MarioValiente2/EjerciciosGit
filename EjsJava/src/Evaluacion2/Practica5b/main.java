@@ -5,8 +5,7 @@ public class main {
         Asignatura asig2 = new Asignatura(50);
         Asignatura asig3 = new Asignatura(10);
         Alumno alumno=new Alumno(asig1, asig2, asig3);
-        Profesor profesor = new Profesor();
-        profesor.ponerNotas(alumno);
-        System.out.printf("La media del alumno es: %.0f", profesor.calcularMedia(alumno));
+        Profesor.ponerNotas(alumno);
+        System.out.printf("La media del alumno es: %.0f", Profesor.calcularMedia(alumno));
     }
 }

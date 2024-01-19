@@ -7,6 +7,7 @@ public class Paloma extends Animal{
     private final int minpeso=1;
     private final int maxpeso=3;
     private int pichones [];
+
     public Paloma(){
         super();
         Random random=new Random();

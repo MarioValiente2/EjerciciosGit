@@ -9,6 +9,7 @@ public abstract class Animal {
     protected String nombre;
     protected int edad;
     protected double peso;
+
     private static final String [] nombres ={"Malo","Bueno", "Perico", "Felipe Gulugulu"};
     public Animal(String nombre, int edad, double peso) {
         this.nombre = nombre;

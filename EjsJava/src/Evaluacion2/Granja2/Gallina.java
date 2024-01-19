@@ -18,7 +18,6 @@ public class Gallina extends Animal {
     }
 
     public Gallina(String nombre, int edad, double peso) {
-
         super(nombre, edad, peso);
         Random random = new Random();
         huevos=new int[7];
@@ -30,7 +29,7 @@ public class Gallina extends Animal {
     @Override
     public String toString() {
         return super.toString() +
-                String.format("\nCantidad de huevos de cada dia %s",Arrays.toString(huevos));
+                String.format("\nCantidad de huevos de cada dia %s,",Arrays.toString(huevos));
                 //"\nCantidad de huevos cada dia: " + Arrays.toString(huevos) + "\nMedia de huevos: "+Media();
     }
 
