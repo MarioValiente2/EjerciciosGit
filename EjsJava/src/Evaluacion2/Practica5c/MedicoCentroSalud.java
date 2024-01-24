@@ -17,7 +17,6 @@ public class MedicoCentroSalud extends Medico {
     }
 
     public double calcularSalario(){
-
         return 0;
     }
 

@@ -10,7 +10,6 @@ public class MedicoAsistenciaDomiciliaria extends Medico{
 
 
     public double calcularSalario(){
-
         return horas*salariohora;
     }
 
