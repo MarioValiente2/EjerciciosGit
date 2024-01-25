@@ -21,7 +21,7 @@ public class main {
         String matricula=scanner.next();
         double km=scanner.nextInt();
         System.in.read();
-        System.out.println("Alguna observacion");
+        System.out.println("Alguna observacion:");
         String observaciones= scanner.nextLine();
         if (opcion == 1) {
             Coche nuevo=new Coche(modelo,anios,color,matricula,km,observaciones);
