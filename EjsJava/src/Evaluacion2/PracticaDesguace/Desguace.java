@@ -9,11 +9,11 @@ public class Desguace extends Vehiculos {
             vehiculos = new Vehiculos[tamano];
                 for (int i = 0; i < vehiculos.length; i++) {
                     if (i % 2 == 0) {
-                       vehiculos[i]= new Coches();
+                       vehiculos[i]= new Coche();
                     } else if (i < (tamano / 2)) {
                         vehiculos[i] = new Moto();
                     } else {
-                        vehiculos[i] = new Camión();
+                        vehiculos[i] = new Camion();
                     }
                 }
         }
