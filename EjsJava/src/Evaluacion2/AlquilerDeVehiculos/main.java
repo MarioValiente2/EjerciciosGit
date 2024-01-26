@@ -22,7 +22,7 @@ public class main {
         double tiempo = scanner.nextDouble();
         if (opcion == 1) {
             Coche nuevo = new Coche(modelo, anios, color, matricula, km, tiempo);
-            AlquilerDeVehiculos alta=new AlquilerDeVehiculos(modelo,anios, color, matricula, km, tiempo);
+            AlquilerDeVehiculos alta=new AlquilerDeVehiculos(modelo,anios,color, matricula, km, tiempo);
             System.out.println(nuevo.toString());
         } else if (opcion == 2) {
             Camion nuevo = new Camion(modelo, anios, color, matricula, km, tiempo);
