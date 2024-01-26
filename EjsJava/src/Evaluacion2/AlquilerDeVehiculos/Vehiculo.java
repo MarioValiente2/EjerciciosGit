@@ -1,9 +1,8 @@
 package Evaluacion2.AlquilerDeVehiculos;
 
-import javax.swing.*;
 import java.util.Random;
 
-public abstract class Vehiculos {
+public abstract class Vehiculo {
     protected String modelo;
     protected String matricula;
     protected String color;
@@ -15,7 +14,7 @@ public abstract class Vehiculos {
     private static final String[] colores = {"Rojo", "Verde", "Azul", "Negro", "Blanco", "Naranja"};
     private static final String[] letras = {"MCK", "GTC", "KLN", "HJT", "FRD", "LWQ"};
     private static final String[] model = {"656FGE6D1", "4BDTVJDF8", "FY8FNJ4U","85BHC6R6E8","D7E8FMJ7D9"};
-    public Vehiculos() {
+    public Vehiculo() {
         Random random = new Random();
         this.modelo=model[(int) (Math.random() * model.length)];
         this.matricula = crearMatricula();
@@ -25,7 +24,7 @@ public abstract class Vehiculos {
         this.tiempo=random.nextDouble(1,20);
     }
 
-    public Vehiculos(String modelo, int anios, String color, String matricula, double km,double tiempo) {
+    public Vehiculo(String modelo, int anios, String color, String matricula, double km, double tiempo) {
         this.modelo = modelo;
         this.matricula = matricula;
         this.color = color;

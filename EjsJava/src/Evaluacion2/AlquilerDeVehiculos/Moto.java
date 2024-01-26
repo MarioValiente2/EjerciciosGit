@@ -3,7 +3,7 @@ package Evaluacion2.AlquilerDeVehiculos;
 import java.util.Arrays;
 import java.util.Random;
 
-public class Moto extends Vehiculos{
+public class Moto extends Vehiculo {
     private int kms[];
     public Moto() {
         super();

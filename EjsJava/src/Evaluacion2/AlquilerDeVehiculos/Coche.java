@@ -2,9 +2,8 @@ package Evaluacion2.AlquilerDeVehiculos;
 
 import java.util.Arrays;
 import java.util.Random;
-import java.util.Scanner;
 
-public class Coche extends Vehiculos {
+public class Coche extends Vehiculo {
     private int[] averias;
 
     public Coche() {

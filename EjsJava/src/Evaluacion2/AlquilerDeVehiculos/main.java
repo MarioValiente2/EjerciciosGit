@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class main {
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Listado de Vehiculos, cuantos quieres ver:");
+        System.out.println("Listado de Vehiculo, cuantos quieres ver:");
         int tamano = scanner.nextInt();
         AlquilerDeVehiculos lista = new AlquilerDeVehiculos(tamano);
         lista.Mostrar();
@@ -21,15 +21,21 @@ public class main {
         System.out.println("Elige el periodo de tiempo:");
         double tiempo = scanner.nextDouble();
         if (opcion == 1) {
-            Coche nuevo = new Coche(modelo, anios, color, matricula, km, tiempo);
-            AlquilerDeVehiculos alta=new AlquilerDeVehiculos(modelo,anios,color, matricula, km, tiempo);
-            System.out.println(nuevo.toString());
+            if (lista.darAlta(modelo, anios, color, matricula, km, tiempo)==true){
+                System.out.println("Añadido correctamente");
+            }else
+                System.out.println("No se ha podido añadir");
         } else if (opcion == 2) {
-            Camion nuevo = new Camion(modelo, anios, color, matricula, km, tiempo);
-            System.out.println(nuevo.toString());
+            if (lista.darAlta(modelo, anios, color, matricula, km, tiempo)==true){
+                System.out.println("Añadido correctamente");
+            }else
+                System.out.println("No se ha podido añadir");
         } else if (opcion == 3) {
-            Moto nuevo = new Moto(modelo, anios, color, matricula, km, tiempo);
-            System.out.println(nuevo.toString());
+            if (lista.darAlta(modelo, anios, color, matricula, km, tiempo)==true){
+                System.out.println("Añadido correctamente");
+            }else
+                System.out.println("No se ha podido añadir");
         }
+        lista.Mostrar();
     }
 }
