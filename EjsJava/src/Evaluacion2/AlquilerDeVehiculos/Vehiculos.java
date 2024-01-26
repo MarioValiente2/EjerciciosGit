@@ -1,5 +1,6 @@
-package Evaluacion2.PracticaDesguace;
+package Evaluacion2.AlquilerDeVehiculos;
 
+import javax.swing.*;
 import java.util.Random;
 
 public abstract class Vehiculos {
@@ -8,12 +9,12 @@ public abstract class Vehiculos {
     protected String color;
     protected int anios;
     protected double km;
-    protected String observaciones;
+    protected double tiempo;
+    protected double precio;
 
     private static final String[] colores = {"Rojo", "Verde", "Azul", "Negro", "Blanco", "Naranja"};
     private static final String[] letras = {"MCK", "GTC", "KLN", "HJT", "FRD", "LWQ"};
-    private static final String[] obs = {"Buen Estado", "Siniestro", "Normal"};
-    private static final String[] model = {"656FGE6D1", "4BDTVJDF8", "FY8FNJ4U"};
+    private static final String[] model = {"656FGE6D1", "4BDTVJDF8", "FY8FNJ4U","85BHC6R6E8","D7E8FMJ7D9"};
     public Vehiculos() {
         Random random = new Random();
         this.modelo=model[(int) (Math.random() * model.length)];
@@ -21,16 +22,16 @@ public abstract class Vehiculos {
         this.color = colores[(int) (Math.random() * colores.length)];
         this.anios = random.nextInt(1, 10);
         this.km = ponerKm();
-        this.observaciones = obs[(int) (Math.random() * obs.length)];
+        this.tiempo=random.nextDouble(1,20);
     }
 
-    public Vehiculos(String modelo, int anios, String color, String matricula, double km, String observaciones) {
+    public Vehiculos(String modelo, int anios, String color, String matricula, double km,double tiempo) {
         this.modelo = modelo;
         this.matricula = matricula;
         this.color = color;
         this.anios = anios;
         this.km = km;
-        this.observaciones = observaciones;
+        this.tiempo=tiempo;
     }
 
     public static String crearMatricula() {
@@ -42,9 +43,18 @@ public abstract class Vehiculos {
 
         String letra = letras[(int) (Math.random() * letras.length)];
 
-        return String.format("La matricula es %d%d%d%d%s", cont1, cont2, cont3, cont4, letra);
+        return String.format("%d%d%d%d%s", cont1, cont2, cont3, cont4, letra);
     }
-
+    public double ponerPrecio(){
+        Random random = new Random();
+        if (tiempo<3){
+            precio=random.nextDouble(100,400);
+        } else if (tiempo<10){
+            precio=random.nextDouble(400,700);
+        }else
+            precio= random.nextDouble(700,1200);
+        return precio;
+    }
     public double ponerKm() {
         Random random = new Random();
         if (anios <= 2) {
@@ -56,8 +66,6 @@ public abstract class Vehiculos {
         }
         return km;
     }
-
-
     public String getMatricula() {
         return matricula;
     }
@@ -74,12 +82,9 @@ public abstract class Vehiculos {
         return km;
     }
 
-    public String getObservaciones() {
-        return observaciones;
-    }
 
     @Override
     public String toString() {
-        return getClass().getSimpleName() + String.format("\nModelo: %s\nMatricula: %s\nColor: %s\nAños de uso: %d\nKm: %.2f\nObservaciones: %s", modelo,matricula,color,anios,km,observaciones);
+        return getClass().getSimpleName() + String.format("\nModelo: %s\nMatricula: %s\nColor: %s\nAños de uso: %d\nKm: %.2f Km\nTiempo: %.2f dias\nPrecio: %.2f €", modelo,matricula,color,anios,km,tiempo,ponerPrecio());
     }
 }
