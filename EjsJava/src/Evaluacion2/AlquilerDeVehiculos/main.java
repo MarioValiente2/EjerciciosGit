@@ -18,7 +18,7 @@ public class main {
         String color = scanner.next();
         String matricula = scanner.next();
         double km = scanner.nextInt();
-        System.out.println("Elige el periodo de tiempo");
+        System.out.println("Elige el periodo de tiempo:");
         double tiempo = scanner.nextDouble();
         if (opcion == 1) {
             Coche nuevo = new Coche(modelo, anios, color, matricula, km, tiempo);
