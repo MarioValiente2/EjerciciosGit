@@ -12,7 +12,7 @@ public class AlquilerDeVehiculos extends Vehiculo {
             if (i % 2 == 0) {
                 vehiculos[i] = new Coche();
             } else if (i < (tamano / 2)) {
-                vehiculos[i] = new Moto();
+                vehiculos[i] = new Camion();
             } else {
                 vehiculos[i] = null;
             }
@@ -24,16 +24,6 @@ public class AlquilerDeVehiculos extends Vehiculo {
             System.out.println(vehiculos[i] + "\n");
         }
     }
-
-    public boolean darBaja() {
-        return false;
-    }
-    public boolean modificar() {
-        return false;
-    }
-    public boolean modificarColor() {
-        return false;
-    }
     public boolean darAlta(String modelo, int anios, String color, String matricula, double km, double tiempo) {
         boolean estar=false;
         for (int i = 0; i < vehiculos.length && !estar; i++) {
@@ -44,4 +34,35 @@ public class AlquilerDeVehiculos extends Vehiculo {
         }
         return estar;
     }
+    public boolean darBaja(String matricula) {
+        boolean estar=true;
+        for (int i = 0; i < vehiculos.length ; i++) {
+            if (vehiculos[i]!=null && vehiculos[i].getMatricula().equalsIgnoreCase(matricula) ){
+                vehiculos[i]=null;
+                estar=false;
+            }
+        }
+        return estar;
+    }
+    public void listarporColor(String color){
+        for (int i = 0; i < vehiculos.length; i++) {
+            if (vehiculos[i]!=null && vehiculos[i].getColor().equalsIgnoreCase(color)){
+                System.out.println(vehiculos[i] + "\n");
+            }
+        }
+    }
+    public boolean modificar(String matricula) {
+        boolean cambiar=false;
+        for (int i = 0; i < vehiculos.length; i++) {
+            if (vehiculos[i]!=null && vehiculos[i].getMatricula().equalsIgnoreCase(matricula) && cambiar==false){
+
+            }
+        }
+
+        return cambiar;
+    }
+    public boolean modificarColor() {
+        return false;
+    }
+
 }
