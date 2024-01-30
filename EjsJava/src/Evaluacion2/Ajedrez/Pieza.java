@@ -1,0 +1,26 @@
+package Evaluacion2.Ajedrez;
+
+public abstract class Pieza {
+    private String color;
+    protected String nombre;
+
+    public Pieza(String color) {
+        nombre = getClass().getSimpleName();
+        this.color = color;
+    }
+
+    public String getColor() {
+        return color;
+    }
+    public abstract boolean validoMovimiento (Movimiento mov);
+    public  boolean pintarPieza(String nombre){
+        return false;
+    }
+    @Override
+    public String toString() {
+        return "Pieza{" +
+                "color='" + color + '\'' +
+                ", nombre='" + nombre + '\'' +
+                '}';
+    }
+}

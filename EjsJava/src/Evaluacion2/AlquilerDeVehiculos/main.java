@@ -45,7 +45,6 @@ public class main {
         lista.listarporColor(color);
 
         System.out.println("Modificar atributo, ingresa la matricula");
-        matricula= scanner.nextInt();
         lista.modificar(matricula);
 
     }
