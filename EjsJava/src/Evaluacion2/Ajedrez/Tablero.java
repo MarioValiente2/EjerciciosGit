@@ -15,6 +15,7 @@ public class Tablero {
             for (int j = 0; j < tablero[0].length; j++) {
                 System.out.print(tablero[i][j]);
             }
+            System.out.println("\n");
         }
     }
     //recorre array y si hay pieza (disinto de null) imprime su nombre
