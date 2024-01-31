@@ -1,7 +1,7 @@
 package Evaluacion2.Ajedrez;
 
 public abstract class Pieza {
-    private String color;
+    protected String color;
     protected String nombre;
 
     public Pieza(String color) {
@@ -18,9 +18,6 @@ public abstract class Pieza {
     }
     @Override
     public String toString() {
-        return "Pieza{" +
-                "color='" + color + '\'' +
-                ", nombre='" + nombre + '\'' +
-                '}';
+        return nombre;
     }
 }

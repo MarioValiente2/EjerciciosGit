@@ -4,18 +4,59 @@ public class Tablero {
     Pieza tablero[][];
     public Tablero(){
         tablero = new Pieza[8][8];
-        tablero[0][0] = new Torre("Blanco");
-        tablero[0][7] = new Torre("Blanco");
-        tablero[7][0] = new Torre("Negro");
-        tablero[7][7] = new Torre("Negro");
-
+        /*
+        tablero[0][0] = new Torre("N");
+        tablero[0][1] = new Caballo("N");
+        tablero[0][2] = new Alfil("N");
+        tablero[0][3] = new Dama("N");
+        tablero[0][4] = new Rey("N");
+        tablero[0][5] = new Alfil("N");
+        tablero[0][6] = new Caballo("N");
+        tablero[0][7] = new Torre("N");
+        tablero[7][0] = new Torre("B");
+        tablero[7][1] = new Caballo("B");
+        tablero[7][2] = new Alfil("B");
+        tablero[7][3] = new Dama("B");
+        tablero[7][4] = new Rey("B");
+        tablero[7][5] = new Alfil("B");
+        tablero[7][6] = new Caballo("B");
+        tablero[7][7] = new Torre("B");
+         */
+        tablero[0][0] = new Torre("B");
+        tablero[0][1] = new Caballo("B");
+        tablero[0][2] = new Alfil("B");
+        tablero[0][3] = new Dama("B");
+        tablero[0][4] = new Rey("B");
+        tablero[0][5] = new Alfil("B");
+        tablero[0][6] = new Caballo("B");
+        tablero[0][7] = new Torre("B");
+        tablero[7][0] = new Torre("N");
+        tablero[7][1] = new Caballo("N");
+        tablero[7][2] = new Alfil("N");
+        tablero[7][3] = new Dama("N");
+        tablero[7][4] = new Rey("N");
+        tablero[7][5] = new Alfil("N");
+        tablero[7][6] = new Caballo("N");
+        tablero[7][7] = new Torre("N");
+        for (int i = 1; i < 2 ;i++) {
+            for (int j = 0; j < tablero[1].length ; j++) {
+                tablero[i][j]=new Peon("B");
+            }
+        }
+        for (int i = 6; i < 7 ;i++) {
+            for (int j = 0; j < tablero[1].length ; j++) {
+                tablero[i][j]=new Peon("N");
+            }
+        }
     }
     public void pintarTablero(){
-        for (int i = 0; i < tablero.length; i++) {
+
+        for (int i = 7; i >= 0; i--) {
+
             for (int j = 0; j < tablero[0].length; j++) {
                 System.out.print(tablero[i][j]);
             }
-            System.out.println("\n");
+            System.out.print("\n");
         }
     }
     //recorre array y si hay pieza (disinto de null) imprime su nombre

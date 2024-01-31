@@ -3,6 +3,11 @@ package Evaluacion2.Ajedrez;
 public class Caballo extends Pieza{
     public Caballo(String color) {
         super(color);
+        if (color.equalsIgnoreCase("N"))
+            nombre= "\u2658 ";
+        else
+            nombre= "\u265E ";
+
     }
 
     @Override

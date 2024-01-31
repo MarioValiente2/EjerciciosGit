@@ -14,21 +14,33 @@ public class Movimiento {
     }
 
     public boolean esVertical() {
-        return false;
+        boolean respuesta =false;
+        if (posInicial.getColumna()==posFinal.getColumna()){
+            respuesta= true;
+        }
+        return respuesta ;
     }
 
     public boolean esHorizontal() {
-        return false;
+        boolean respuesta =false;
+        if (posInicial.getFila()==posFinal.getFila()){
+            respuesta= true;
+        }
+        return respuesta;
     }
 
     public boolean esDiagonal() {
-        return false;
+        boolean respuesta=false;
+        if (esVertical()==esHorizontal()){
+            respuesta=true;
+        }
+        return respuesta;
     }
     public int saltoHorizontal(){
-        return 0;
+        return posFinal.getColumna()-posInicial.getColumna();
     }
     public int saltoVertical(){
-        return 0;
+        return posFinal.getFila()-posInicial.getFila();
     }
 
 }

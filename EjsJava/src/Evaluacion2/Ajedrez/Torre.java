@@ -3,7 +3,7 @@ package Evaluacion2.Ajedrez;
 public class Torre extends Pieza{
     public Torre(String color) {
         super(color);
-        if (color.equalsIgnoreCase("Blanco"))
+        if (color.equalsIgnoreCase("N"))
             nombre= "\u2656 ";
         else
             nombre= "\u265C ";
