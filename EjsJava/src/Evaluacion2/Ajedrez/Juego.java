@@ -25,8 +25,6 @@ public class Juego {
             System.out.println("Jugada Inválida. El formato es A1A2");
         else if (!estaRango(filaInicial) || !(estaRango(filaFinal)) || !(estaRango(columnaInicial)) || !(estaRango(columnaFinal)))
             System.out.println("Jugada Inválida. El formato debe ser del tipo A1A2 (A..H, 1..8)");
-
-
         //nuevo = new Movimiento(new Posicion(filaInicial,columnaInicial), new )
         return nuevo;
     }
