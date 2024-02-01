@@ -11,6 +11,7 @@ public class Main {
         String jugada;
         Movimiento mov = null;
         do {
+                System.out.println("Turno de: "+enviar.darTurno());
                 System.out.println("Introduce la jugada");
                 jugada= scanner.next();
                 jugada=jugada.toUpperCase();

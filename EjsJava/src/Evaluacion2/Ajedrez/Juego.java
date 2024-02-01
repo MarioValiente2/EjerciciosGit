@@ -2,12 +2,22 @@ package Evaluacion2.Ajedrez;
 
 public class Juego {
     private String elTurno; //B ó N
+    private int contador=0;
 
     public String getTurno(){
         return elTurno;
     }
     public void setElTurno(String elTurno) {
         this.elTurno = elTurno;
+    }
+    public String darTurno(){
+        if (contador%2!=0){
+            elTurno="N";
+        }else{
+            elTurno="B";
+        }
+        contador++;
+        return elTurno;
     }
 
     public boolean estaRango(int x){
@@ -23,8 +33,12 @@ public class Juego {
         //chequeo
         if (jugada.length()!=4)
             System.out.println("Jugada Inválida. El formato es A1A2");
-        else if (!estaRango(filaInicial) || !(estaRango(filaFinal)) || !(estaRango(columnaInicial)) || !(estaRango(columnaFinal)))
+        else if (!(estaRango(filaInicial)) || !(estaRango(filaFinal)) || !(estaRango(columnaInicial)) || !(estaRango(columnaFinal)))
             System.out.println("Jugada Inválida. El formato debe ser del tipo A1A2 (A..H, 1..8)");
+        else if (!tablero.hayPieza(filaInicial, columnaInicial)){
+            System.out.println("No hay pieza");
+        }
+
         //nuevo = new Movimiento(new Posicion(filaInicial,columnaInicial), new )
         return nuevo;
     }
