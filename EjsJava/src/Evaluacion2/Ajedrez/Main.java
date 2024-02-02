@@ -10,14 +10,17 @@ public class Main {
         Juego enviar=new Juego();
         String jugada;
         Movimiento mov = null;
-        do {
-                System.out.println("Turno de: "+enviar.darTurno());
-                System.out.println("Introduce la jugada");
-                jugada= scanner.next();
-                jugada=jugada.toUpperCase();
-                mov = enviar.jugada(jugada,tablero);
-        }while (mov==null);
-        //validar la pieza de la pos inicial de mov, si puede o no puede hacer el mov
+            do {
+                    System.out.println("Turno de: "+enviar.darTurno());
+                    System.out.println("Introduce la jugada");
+                    jugada= scanner.next();
+                    jugada=jugada.toUpperCase();
+                    mov = enviar.jugada(jugada,tablero);
+            }while (mov==null);
+            if (tablero.devuelvePieza(mov.getPosInicial()).validoMovimiento(mov))
+                tablero.mover(mov);
+
+            //validar la pieza de la pos inicial de mov, si puede o no puede hacer el mov
 
         //enviar.jugada(jugada,);
 

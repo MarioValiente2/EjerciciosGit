@@ -2,44 +2,49 @@ package Evaluacion2.Ajedrez;
 
 public class Juego {
     private String elTurno; //B ó N
-    private int contador=0;
+    private int contador = 0;
 
-    public String getTurno(){
+    public String getTurno() {
         return elTurno;
     }
+
     public void setElTurno(String elTurno) {
         this.elTurno = elTurno;
     }
-    public String darTurno(){
-        if (contador%2!=0){
-            elTurno="N";
-        }else{
-            elTurno="B";
+
+    public String darTurno() {
+        if (contador % 2 != 0) {
+            elTurno = "N";
+        } else {
+            elTurno = "B";
         }
-        contador++;
         return elTurno;
     }
 
-    public boolean estaRango(int x){
-        return x>=0 && x<=7;
+    public boolean estaRango(int x) {
+        return x >= 0 && x <= 7;
     }
-    public Movimiento jugada(String jugada, Tablero tablero){
-        Movimiento nuevo=null;
 
-        int filaInicial=jugada.charAt(1)-49;
-        int filaFinal=jugada.charAt(3)-49;
-        int columnaInicial= jugada.charAt(0)-65;
-        int columnaFinal= jugada.charAt(2)-65;
+    public Movimiento jugada(String jugada, Tablero tablero) {
+        Movimiento nuevo = null;
+        int filaInicial = jugada.charAt(1) - 49;
+        int filaFinal = jugada.charAt(3) - 49;
+        int columnaInicial = jugada.charAt(0) - 65;
+        int columnaFinal = jugada.charAt(2) - 65;
         //chequeo
-        if (jugada.length()!=4)
+        if (jugada.length() != 4)
             System.out.println("Jugada Inválida. El formato es A1A2");
         else if (!(estaRango(filaInicial)) || !(estaRango(filaFinal)) || !(estaRango(columnaInicial)) || !(estaRango(columnaFinal)))
             System.out.println("Jugada Inválida. El formato debe ser del tipo A1A2 (A..H, 1..8)");
-        else if (!tablero.hayPieza(filaInicial, columnaInicial)){
+        else if (!tablero.hayPieza(filaInicial, columnaInicial)) {
             System.out.println("No hay pieza");
-        }
-
-        //nuevo = new Movimiento(new Posicion(filaInicial,columnaInicial), new )
+        } else if (!(tablero.hayPieza(filaInicial, columnaInicial) && tablero.devuelvePieza(filaInicial, columnaInicial).color.equalsIgnoreCase(elTurno))) {
+            System.out.println("No puedes mover la pieza del contrario");
+        } else if (tablero.hayPieza(filaFinal, columnaFinal) && tablero.devuelvePieza(filaFinal, columnaFinal).color.equalsIgnoreCase(elTurno)) {
+            System.out.println("No te comas tus piezas");
+        } else
+            contador++;
+            nuevo = new Movimiento(new Posicion(filaInicial,columnaInicial), new Posicion(filaFinal,columnaFinal));
         return nuevo;
     }
 }

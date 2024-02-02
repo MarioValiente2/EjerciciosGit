@@ -13,6 +13,22 @@ public class Movimiento {
 
     }
 
+    public Posicion getPosInicial() {
+        return posInicial;
+    }
+
+    public void setPosInicial(Posicion posInicial) {
+        this.posInicial = posInicial;
+    }
+
+    public Posicion getPosFinal() {
+        return posFinal;
+    }
+
+    public void setPosFinal(Posicion posFinal) {
+        this.posFinal = posFinal;
+    }
+
     public boolean esVertical() {
         boolean respuesta =false;
         if (posInicial.getColumna()==posFinal.getColumna()){

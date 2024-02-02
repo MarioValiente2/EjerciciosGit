@@ -20,6 +20,7 @@ public class Tablero {
         tablero[7][5] = new Alfil("N");
         tablero[7][6] = new Caballo("N");
         tablero[7][7] = new Torre("N");
+
         for (int i = 1; i < 2 ;i++) {
             for (int j = 0; j < tablero[1].length ; j++) {
                 tablero[i][j]=new Peon("B");
@@ -32,13 +33,17 @@ public class Tablero {
         }
     }
     public void pintarTablero(){
-
+        int cont=8;
+        System.out.println("  A  B  C D  E  F G  H");
         for (int i = 7; i >= 0; i--) {
+            System.out.print(cont+" ");
             for (int j = 0; j < tablero[0].length; j++) {
                 if (tablero[i][j]!=null) {
                     System.out.print(tablero[i][j]);
-                }
+                }else
+                    System.out.print(" \u25FC");
             }
+            cont--;
             System.out.print("\n");
         }
     }
@@ -60,22 +65,25 @@ public class Tablero {
         return false;
     }
     public void ponPieza(Pieza figura, int fila, int columna){
-
+            tablero[fila][columna]=figura;
     }
     public void ponPieza(Pieza figura, Posicion Pos){
-
+            ponPieza(figura,new Posicion(Pos.getFila(), Pos.getColumna()));
     }
     public void quitaPieza(int fila,int columna){
 
     }
-    public void QuitaPieza(Posicion pos){
+    public void quitaPieza(Posicion pos){
 
     }
-    public Pieza DevuelvePieza(int fila,int columna){
+    public Pieza devuelvePieza(int fila,int columna){
         return tablero[fila][columna];
     }
-    public Pieza DevuelvePieza(Posicion pos){
-        return null;
+    public Pieza devuelvePieza(Posicion pos){
+        return devuelvePieza(pos.getFila(), pos.getColumna());
     }
 
+    public void mover(Movimiento mov) {
+
+    }
 }

@@ -8,7 +8,6 @@ public class Rey extends Pieza{
         else
             nombre= "\u265A ";
     }
-
     @Override
     public boolean validoMovimiento(Movimiento mov) {
         return mov.esVertical() || mov.esHorizontal() || mov.esDiagonal();
