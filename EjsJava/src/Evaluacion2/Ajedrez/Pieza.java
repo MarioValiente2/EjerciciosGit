@@ -12,7 +12,7 @@ public abstract class Pieza {
     public String getColor() {
         return color;
     }
-    public abstract boolean validoMovimiento (Movimiento mov);
+    public abstract boolean validoMovimiento (Movimiento mov,Tablero tablero);
     public  boolean pintarPieza(String nombre){
         return false;
     }

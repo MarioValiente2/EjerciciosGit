@@ -8,9 +8,9 @@ public class Alfil extends Pieza{
         else
             nombre= "\u265D ";
     }
-
     @Override
-    public boolean validoMovimiento(Movimiento mov) {
-        return mov.esDiagonal();
+    public boolean validoMovimiento(Movimiento mov,Tablero tablero) {
+        return (!tablero.hayPiezasEntre(mov))?mov.esDiagonal():false;
     }
+
 }

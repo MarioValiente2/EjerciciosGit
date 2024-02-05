@@ -11,7 +11,10 @@ public class Juego {
     public void setElTurno(String elTurno) {
         this.elTurno = elTurno;
     }
-
+    /**
+     * Da el turno a cada jugador
+     * @return devuelve N o B
+     */
     public String darTurno() {
         if (contador % 2 != 0) {
             elTurno = "N";
@@ -20,7 +23,11 @@ public class Juego {
         }
         return elTurno;
     }
-
+    /**
+     * Ver si cada caracter esta en rango
+     * @param x
+     * @return Devuelve un booleand dependiendo si esta entre 0 y 7
+     */
     public boolean estaRango(int x) {
         return x >= 0 && x <= 7;
     }
@@ -42,9 +49,12 @@ public class Juego {
             System.out.println("No puedes mover la pieza del contrario");
         } else if (tablero.hayPieza(filaFinal, columnaFinal) && tablero.devuelvePieza(filaFinal, columnaFinal).color.equalsIgnoreCase(elTurno)) {
             System.out.println("No te comas tus piezas");
-        } else
+        } else if (tablero.devuelvePieza(new Posicion(filaInicial, columnaInicial)).validoMovimiento(new Movimiento(new Posicion(filaInicial, columnaInicial), new Posicion(filaFinal, columnaFinal)),tablero)){
+            nuevo = new Movimiento(new Posicion(filaInicial, columnaInicial), new Posicion(filaFinal, columnaFinal));
             contador++;
-            nuevo = new Movimiento(new Posicion(filaInicial,columnaInicial), new Posicion(filaFinal,columnaFinal));
+        }else {
+            System.out.println("Movimiento no valido");
+        }
         return nuevo;
     }
 }

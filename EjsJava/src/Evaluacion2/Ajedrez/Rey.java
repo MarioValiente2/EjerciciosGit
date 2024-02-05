@@ -9,7 +9,7 @@ public class Rey extends Pieza{
             nombre= "\u265A ";
     }
     @Override
-    public boolean validoMovimiento(Movimiento mov) {
-        return mov.esVertical() || mov.esHorizontal() || mov.esDiagonal();
+    public boolean validoMovimiento(Movimiento mov,Tablero tablero) {
+        return (!tablero.hayPiezasEntre(mov))?mov.esVertical() || mov.esHorizontal() || mov.esDiagonal():false;
     }
 }

@@ -9,9 +9,8 @@ public class Caballo extends Pieza{
             nombre= "\u265E ";
 
     }
-
     @Override
-    public boolean validoMovimiento(Movimiento mov) {
+    public boolean validoMovimiento(Movimiento mov,Tablero tablero) {
         boolean respuesta = false;
         if ((Math.abs(mov.saltoHorizontal())==2 &&  (Math.abs(mov.saltoVertical())==1)) ||(Math.abs(mov.saltoHorizontal())==1 &&  (Math.abs(mov.saltoVertical())==2)))
             respuesta = true;

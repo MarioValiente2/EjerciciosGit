@@ -10,7 +10,7 @@ public class Peon extends Pieza {
     }
 
     @Override
-    public boolean validoMovimiento(Movimiento mov) {
-        return mov.esVertical() || mov.esDiagonal();
+    public boolean validoMovimiento(Movimiento mov,Tablero tablero) {
+        return (!tablero.hayPiezasEntre(mov))?mov.esVertical() || mov.esDiagonal() || mov.esHorizontal():false;
     }
 }
