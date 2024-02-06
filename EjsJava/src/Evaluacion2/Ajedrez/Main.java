@@ -18,8 +18,9 @@ public class Main {
                 jugada = jugada.toUpperCase();
                 mov = enviar.jugada(jugada, tablero);
             } while (mov == null);
-            if (tablero.devuelvePieza(mov.getPosInicial()).validoMovimiento(mov, tablero)) {
+            if (tablero.devuelvePieza(mov.getPosInicial()).validoMovimiento(mov, tablero) && !tablero.hayPiezasEntre(mov)) {
                 tablero.mover(mov);
+                enviar.cambiarTurno();
                 tablero.pintarTablero();
             }
         } while (mov != null);

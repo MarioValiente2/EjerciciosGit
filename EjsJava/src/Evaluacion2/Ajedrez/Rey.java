@@ -10,6 +10,6 @@ public class Rey extends Pieza{
     }
     @Override
     public boolean validoMovimiento(Movimiento mov,Tablero tablero) {
-        return (!tablero.hayPiezasEntre(mov))?mov.esVertical() || mov.esHorizontal() || mov.esDiagonal():false;
+        return mov.esVertical() || mov.esHorizontal() || mov.esDiagonal();
     }
 }

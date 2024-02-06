@@ -11,7 +11,8 @@ public class Torre extends Pieza{
 
     @Override
     public boolean validoMovimiento(Movimiento mov,Tablero tablero) {
-        return (!tablero.hayPiezasEntre(mov))?mov.esVertical() || mov.esHorizontal():false;
+        //return (!tablero.hayPiezasEntre(mov))?mov.esVertical() || mov.esHorizontal():false;
+        return (mov.esVertical() || mov.esHorizontal());
     }
 
 

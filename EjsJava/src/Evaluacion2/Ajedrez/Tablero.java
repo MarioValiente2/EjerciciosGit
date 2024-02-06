@@ -3,6 +3,10 @@ package Evaluacion2.Ajedrez;
 public class Tablero {
     Pieza tablero[][];
 
+    /**
+     * Es el constructor de esta clase (Tablero), no recibe ningun parametro, lo que hace es inicializar el atributo tablero [][].
+     * En cada posicion del array crea una pieza.
+     */
     public Tablero() {
         tablero = new Pieza[8][8];
         tablero[0][0] = new Torre("B");
@@ -32,8 +36,14 @@ public class Tablero {
                 tablero[i][j] = new Peon("N");
             }
         }
+
+
     }
 
+    /**
+     * Este metodo imprime el atributo tablero que es un array bidimensional empezando desde la ultima posicion hasta la primera.
+     * En la posicion que no hay ninguna pieza pone un cuadrado blanco o negro respectivamente
+     */
     public void pintarTablero() {
         int cont = 8;
         System.out.println("  A  B  C D  E  F G  H");
@@ -50,9 +60,16 @@ public class Tablero {
             cont--;
             System.out.print("\n");
         }
+        System.out.println("  A  B  C D  E  F G  H");
     }
 
-    //recorre array y si hay pieza (disinto de null) imprime su nombre
+    /**
+     * En este metodo llamdo hayPieza a partir de estos dos parametros mira en la coordenada si hay alguna pieza o no
+     * @param fila
+     * @param columna
+     * @return Devuelve respuesta, este booleano empieza en false  y si en esa posicion hay una pieza se vuelve true
+     */
+
     public boolean hayPieza(int fila, int columna) {
         boolean respuesta = false;
         if (tablero[fila][columna] != null) {
@@ -61,6 +78,11 @@ public class Tablero {
         return respuesta;
     }
 
+    /**
+     * Este metodo llamado hayPieza a partir del parametro mira si hay alguna pieza o no
+     * @param pos Este parametro esta compuesto por una fila y una columna
+     * @return  Devuelve un booleano
+     */
     public boolean hayPieza(Posicion pos) {
         return hayPieza(pos.getFila(), pos.getColumna());
     }
@@ -69,32 +91,42 @@ public class Tablero {
         boolean salir = false;
         if (mov.esVertical()) {
             if (mov.getPosInicial().getFila() > mov.getPosFinal().getFila()) {
-                for (int i = mov.getPosInicial().getFila()+1; i < mov.getPosFinal().getFila() && !salir; i++) {
+                for (int i = mov.getPosInicial().getFila()-1; i > mov.getPosFinal().getFila() && !salir; i--) {
                     if (hayPieza(i, mov.getPosInicial().getColumna())) {
                         salir = true;
                     }
                 }
             } else {
-                for (int i = mov.getPosInicial().getFila()+1; i < mov.getPosFinal().getFila() && !salir; i--) {
+                for (int i = mov.getPosInicial().getFila()+1; i < mov.getPosFinal().getFila() && !salir; i++) {
                     if (hayPieza(i, mov.getPosInicial().getColumna())) {
                         salir = true;
                     }
                 }
             }
         }
-        if (mov.esHorizontal()) {
-            if (mov.getPosInicial().getColumna() > mov.getPosFinal().getColumna()) {
-                for (int i = mov.getPosInicial().getColumna()+1; i < mov.getPosFinal().getColumna() && !salir; i++) {
+        else if (mov.esHorizontal()) {
+            if (mov.getPosInicial().getColumna() > mov.getPosFinal().getColumna()) { //izq
+                for (int i = mov.getPosInicial().getColumna()-1; i > mov.getPosFinal().getColumna() && !salir; i--) {
                     if (hayPieza(mov.getPosInicial().getFila(),i)) {
                         salir = true;
                     }
                 }
             } else {
-                for (int i = mov.getPosInicial().getColumna() + 1; i < mov.getPosFinal().getColumna() && !salir; i--) {
+                for (int i = mov.getPosInicial().getColumna() + 1; i < mov.getPosFinal().getColumna() && !salir; i++) {//derecha
                     if (hayPieza(mov.getPosInicial().getFila(), i)) {
                         salir = true;
                     }
                 }
+            }
+        }else if (mov.esDiagonal()){
+            if ((mov.getPosInicial().getFila()>mov.getPosFinal().getFila()) && (mov.getPosInicial().getColumna()< mov.getPosFinal().getColumna())){
+                for (int i = mov.getPosInicial().getFila()-1; i > mov.getPosFinal().getFila() && !salir; i--) {
+                    if (hayPieza(i,i)){
+                        salir=true;
+                    }
+                }
+            }else if ((mov.getPosInicial().getFila() > mov.getPosFinal().getFila()) && (mov.getPosInicial().getColumna()> mov.getPosFinal().getColumna())){
+
             }
         }
         return salir;

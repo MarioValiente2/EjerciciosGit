@@ -23,15 +23,30 @@ public class Juego {
         }
         return elTurno;
     }
+
+    public void setContador(int contador) {
+        this.contador = contador;
+    }
+    public void cambiarTurno(){
+        contador++;
+    }
     /**
      * Ver si cada caracter esta en rango
-     * @param x
-     * @return Devuelve un booleand dependiendo si esta entre 0 y 7
+     * @param x Este parametro será cada caracter de la jugada sependiendo de la posicion tomara diferentes valores
+     * @return Devuelve un boolean dependiendo si esta entre 0 y 7
      */
     public boolean estaRango(int x) {
         return x >= 0 && x <= 7;
     }
 
+    /**
+     * Este metodo convierte la jugada a valores entre 0 y 7 y es donde se encuentran las restricciones, con estas
+     * restricciones vemos si la jugada es valida, si no lo es habrá que introducir otra jugada, asi hasta que sea una valida.
+     * Estas restricciones tambien se refieren a los movimientos de cada pieza
+     * @param jugada
+     * @param tablero
+     * @return Devuelve un Movimiento
+     */
     public Movimiento jugada(String jugada, Tablero tablero) {
         Movimiento nuevo = null;
         int filaInicial = jugada.charAt(1) - 49;
@@ -49,11 +64,8 @@ public class Juego {
             System.out.println("No puedes mover la pieza del contrario");
         } else if (tablero.hayPieza(filaFinal, columnaFinal) && tablero.devuelvePieza(filaFinal, columnaFinal).color.equalsIgnoreCase(elTurno)) {
             System.out.println("No te comas tus piezas");
-        } else if (tablero.devuelvePieza(new Posicion(filaInicial, columnaInicial)).validoMovimiento(new Movimiento(new Posicion(filaInicial, columnaInicial), new Posicion(filaFinal, columnaFinal)),tablero)){
+        } else {//válido
             nuevo = new Movimiento(new Posicion(filaInicial, columnaInicial), new Posicion(filaFinal, columnaFinal));
-            contador++;
-        }else {
-            System.out.println("Movimiento no valido");
         }
         return nuevo;
     }

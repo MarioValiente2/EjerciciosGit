@@ -10,7 +10,6 @@ public class Alfil extends Pieza{
     }
     @Override
     public boolean validoMovimiento(Movimiento mov,Tablero tablero) {
-        return (!tablero.hayPiezasEntre(mov))?mov.esDiagonal():false;
+        return mov.esDiagonal();
     }
-
 }
