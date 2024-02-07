@@ -4,12 +4,28 @@ public class Juego {
     private String elTurno; //B ó N
     private int contador = 0;
 
+    /**
+     * Ver valor del Turno
+     * @return Devuelve el valor del Turno
+     */
     public String getTurno() {
         return elTurno;
     }
 
+    /**
+     * Modifica el valor del Turno a partir del parametro
+     * @param elTurno Nuevo valor del Turno
+     */
     public void setElTurno(String elTurno) {
         this.elTurno = elTurno;
+    }
+
+    /**
+     * Modifica el valor del Contador a partir del parametro
+     * @param contador Nuevo valor del Contador
+     */
+    public void setContador(int contador) {
+        this.contador = contador;
     }
     /**
      * Da el turno a cada jugador
@@ -24,9 +40,9 @@ public class Juego {
         return elTurno;
     }
 
-    public void setContador(int contador) {
-        this.contador = contador;
-    }
+    /**
+     * Metodo que suma 1 al Contador
+     */
     public void cambiarTurno(){
         contador++;
     }
@@ -49,23 +65,25 @@ public class Juego {
      */
     public Movimiento jugada(String jugada, Tablero tablero) {
         Movimiento nuevo = null;
-        int filaInicial = jugada.charAt(1) - 49;
-        int filaFinal = jugada.charAt(3) - 49;
-        int columnaInicial = jugada.charAt(0) - 65;
-        int columnaFinal = jugada.charAt(2) - 65;
-        //chequeo
         if (jugada.length() != 4)
             System.out.println("Jugada Inválida. El formato es A1A2");
-        else if (!(estaRango(filaInicial)) || !(estaRango(filaFinal)) || !(estaRango(columnaInicial)) || !(estaRango(columnaFinal)))
-            System.out.println("Jugada Inválida. El formato debe ser del tipo A1A2 (A..H, 1..8)");
-        else if (!tablero.hayPieza(filaInicial, columnaInicial)) {
-            System.out.println("No hay pieza");
-        } else if (!(tablero.hayPieza(filaInicial, columnaInicial) && tablero.devuelvePieza(filaInicial, columnaInicial).color.equalsIgnoreCase(elTurno))) {
-            System.out.println("No puedes mover la pieza del contrario");
-        } else if (tablero.hayPieza(filaFinal, columnaFinal) && tablero.devuelvePieza(filaFinal, columnaFinal).color.equalsIgnoreCase(elTurno)) {
-            System.out.println("No te comas tus piezas");
-        } else {//válido
-            nuevo = new Movimiento(new Posicion(filaInicial, columnaInicial), new Posicion(filaFinal, columnaFinal));
+        else {
+            int filaInicial = jugada.charAt(1) - 49;
+            int filaFinal = jugada.charAt(3) - 49;
+            int columnaInicial = jugada.charAt(0) - 65;
+            int columnaFinal = jugada.charAt(2) - 65;
+            //chequeo
+            if (!(estaRango(filaInicial)) || !(estaRango(filaFinal)) || !(estaRango(columnaInicial)) || !(estaRango(columnaFinal)))
+                System.out.println("Jugada Inválida. El formato debe ser del tipo A1A2 (A..H, 1..8)");
+            else if (!tablero.hayPieza(filaInicial, columnaInicial)) {
+                System.out.println("No hay pieza");
+            } else if (!(tablero.hayPieza(filaInicial, columnaInicial) && tablero.devuelvePieza(filaInicial, columnaInicial).color.equalsIgnoreCase(elTurno))) {
+                System.out.println("No puedes mover la pieza del contrario");
+            } else if (tablero.hayPieza(filaFinal, columnaFinal) && tablero.devuelvePieza(filaFinal, columnaFinal).color.equalsIgnoreCase(elTurno)) {
+                System.out.println("No te comas tus piezas");
+            } else {//válido
+                nuevo = new Movimiento(new Posicion(filaInicial, columnaInicial), new Posicion(filaFinal, columnaFinal));
+            }
         }
         return nuevo;
     }

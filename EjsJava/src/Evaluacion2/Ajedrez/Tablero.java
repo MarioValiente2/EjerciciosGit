@@ -40,6 +40,7 @@ public class Tablero {
 
     }
 
+
     /**
      * Este metodo imprime el atributo tablero que es un array bidimensional empezando desde la ultima posicion hasta la primera.
      * En la posicion que no hay ninguna pieza pone un cuadrado blanco o negro respectivamente
@@ -54,8 +55,7 @@ public class Tablero {
                     System.out.print(tablero[i][j]);
                 } else if ((i + j) % 2 == 1) {
                     System.out.print("\u25FC ");
-                } else
-                    System.out.print("\u25FB ");
+                } else System.out.print("\u25FB ");
             }
             cont--;
             System.out.print("\n");
@@ -65,6 +65,7 @@ public class Tablero {
 
     /**
      * En este metodo llamdo hayPieza a partir de estos dos parametros mira en la coordenada si hay alguna pieza o no
+     *
      * @param fila
      * @param columna
      * @return Devuelve respuesta, este booleano empieza en false  y si en esa posicion hay una pieza se vuelve true
@@ -80,34 +81,41 @@ public class Tablero {
 
     /**
      * Este metodo llamado hayPieza a partir del parametro mira si hay alguna pieza o no
+     *
      * @param pos Este parametro esta compuesto por una fila y una columna
-     * @return  Devuelve un booleano
+     * @return Devuelve un booleano
      */
     public boolean hayPieza(Posicion pos) {
         return hayPieza(pos.getFila(), pos.getColumna());
     }
 
+    /**
+     * Este metodo revisa a partir de un movimiento,si es posible hacer ese movimiento buscando que no haya ninguna pieza en
+     * medio de la jugada, esto afecta a todas las piezas menos al Caballo. Los movimientos que verifica son los siguientes: Vertical, Horizaontal y Diagonal
+     *
+     * @param mov Este parametro esta compuesto por una Posicion Inicial y una Final
+     * @return Devuelve un booleano, si no escuentra piezas devuelve un false y si encuentra una o mas devuelve un true
+     */
     public boolean hayPiezasEntre(Movimiento mov) {
         boolean salir = false;
         if (mov.esVertical()) {
             if (mov.getPosInicial().getFila() > mov.getPosFinal().getFila()) {
-                for (int i = mov.getPosInicial().getFila()-1; i > mov.getPosFinal().getFila() && !salir; i--) {
+                for (int i = mov.getPosInicial().getFila() - 1; i > mov.getPosFinal().getFila() && !salir; i--) {
                     if (hayPieza(i, mov.getPosInicial().getColumna())) {
                         salir = true;
                     }
                 }
             } else {
-                for (int i = mov.getPosInicial().getFila()+1; i < mov.getPosFinal().getFila() && !salir; i++) {
+                for (int i = mov.getPosInicial().getFila() + 1; i < mov.getPosFinal().getFila() && !salir; i++) {
                     if (hayPieza(i, mov.getPosInicial().getColumna())) {
                         salir = true;
                     }
                 }
             }
-        }
-        else if (mov.esHorizontal()) {
+        } else if (mov.esHorizontal()) {
             if (mov.getPosInicial().getColumna() > mov.getPosFinal().getColumna()) { //izq
-                for (int i = mov.getPosInicial().getColumna()-1; i > mov.getPosFinal().getColumna() && !salir; i--) {
-                    if (hayPieza(mov.getPosInicial().getFila(),i)) {
+                for (int i = mov.getPosInicial().getColumna() - 1; i > mov.getPosFinal().getColumna() && !salir; i--) {
+                    if (hayPieza(mov.getPosInicial().getFila(), i)) {
                         salir = true;
                     }
                 }
@@ -118,44 +126,104 @@ public class Tablero {
                     }
                 }
             }
-        }else if (mov.esDiagonal()){
-            if ((mov.getPosInicial().getFila()>mov.getPosFinal().getFila()) && (mov.getPosInicial().getColumna()< mov.getPosFinal().getColumna())){
-                for (int i = mov.getPosInicial().getFila()-1; i > mov.getPosFinal().getFila() && !salir; i--) {
-                    if (hayPieza(i,i)){
-                        salir=true;
+        } else if (mov.esDiagonal()) {
+            if ((mov.getPosInicial().getFila() > mov.getPosFinal().getFila()) && (mov.getPosInicial().getColumna() < mov.getPosFinal().getColumna())) {  //fila decrece y columan crece
+                for (int i = mov.getPosInicial().getFila() - 1, j = mov.getPosInicial().getColumna(); i > mov.getPosFinal().getFila() && !salir; i--, j++) {
+                    if (hayPieza(i, j)) {
+                        salir = true;
                     }
                 }
-            }else if ((mov.getPosInicial().getFila() > mov.getPosFinal().getFila()) && (mov.getPosInicial().getColumna()> mov.getPosFinal().getColumna())){
+            } else if ((mov.getPosInicial().getFila() > mov.getPosFinal().getFila()) && (mov.getPosInicial().getColumna() > mov.getPosFinal().getColumna())) {
+                for (int i = mov.getPosInicial().getFila() - 1, j = mov.getPosInicial().getColumna(); i > mov.getPosFinal().getFila() && !salir; i--, j--) {
+                    if (hayPieza(i, j)) {
+                        salir = true;
+                    }
+                }
+            } else if ((mov.getPosInicial().getFila() < mov.getPosFinal().getFila()) && (mov.getPosInicial().getColumna() > mov.getPosFinal().getColumna())) {
+                for (int i = mov.getPosInicial().getFila() + 1, j = mov.getPosInicial().getColumna(); i < mov.getPosFinal().getFila() && !salir; i++, j--) {
+                    if (hayPieza(i, j)) {
+                        salir = true;
+                    }
+                }
 
+            } else if ((mov.getPosInicial().getFila() < mov.getPosFinal().getFila()) && (mov.getPosInicial().getColumna() < mov.getPosFinal().getColumna())) {
+                for (int i = mov.getPosInicial().getFila() + 1, j = mov.getPosInicial().getColumna(); i < mov.getPosFinal().getFila() && !salir; i++, j++) {
+                    if (hayPieza(i, j)) {
+                        salir = true;
+                    }
+                }
             }
         }
         return salir;
     }
 
+    /**
+     * Este metodo pone la pieza en una posicion a partir de una fila y una columna.
+     *
+     * @param figura  Hace referancia a la pieza
+     * @param fila
+     * @param columna
+     */
     public void ponPieza(Pieza figura, int fila, int columna) {
         tablero[fila][columna] = figura;
     }
 
+    /**
+     * Este metodo pone la pieza en una posicion
+     *
+     * @param figura Hace referancia a la pieza
+     * @param Pos    Compuesta por una fila y una columna
+     */
     public void ponPieza(Pieza figura, Posicion Pos) {
         ponPieza(figura, new Posicion(Pos.getFila(), Pos.getColumna()));
     }
 
+    /**
+     * Este metodo quita una pieza de una posicion a partir de una fila y una columna
+     *
+     * @param fila
+     * @param columna
+     */
     public void quitaPieza(int fila, int columna) {
         tablero[fila][columna] = null;
     }
 
+    /**
+     * Este metodo quita una pieza de una posicion
+     *
+     * @param pos Compuesta por una fila y una columna
+     */
     public void quitaPieza(Posicion pos) {
         quitaPieza(pos.getFila(), pos.getColumna());
     }
 
+    /**
+     * Este metodo mira la pieza que hay en una posicion a partir de una fila y una columna
+     *
+     * @param fila
+     * @param columna
+     * @return Devuelve una pieza
+     */
     public Pieza devuelvePieza(int fila, int columna) {
         return tablero[fila][columna];
     }
 
+    /**
+     * Este metodo mira la pieza que hay en una posicion
+     *
+     * @param pos Compuesta por una fila y una columna
+     * @return Devuelve una pieza
+     */
     public Pieza devuelvePieza(Posicion pos) {
         return devuelvePieza(pos.getFila(), pos.getColumna());
     }
 
+    /**
+     * Realiza el movimiento, primero pone la pieza en la posicion que ha obtenido de la jugada
+     * y despues quita la pieza que se encuentra en la posicion inicial
+     *
+     * @param mov Compuesto por la posicion Inicial y la final
+     */
     public void mover(Movimiento mov) {
         ponPieza(tablero[mov.getPosInicial().getFila()][mov.getPosInicial().getColumna()], mov.getPosFinal().getFila(), mov.getPosFinal().getColumna());
         quitaPieza(mov.getPosInicial());
