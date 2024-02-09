@@ -3,6 +3,7 @@ package Evaluacion2.Ajedrez;
 public class Tablero {
     Pieza tablero[][];
 
+
     /**
      * Es el constructor de esta clase (Tablero), no recibe ningun parametro, lo que hace es inicializar el atributo tablero [][].
      * En cada posicion del array crea una pieza.
@@ -38,6 +39,8 @@ public class Tablero {
         }
 
 
+
+
     }
 
 
@@ -53,7 +56,8 @@ public class Tablero {
             for (int j = 0; j < tablero[0].length; j++) {
                 if (tablero[i][j] != null) {
                     System.out.print(tablero[i][j]);
-                } else if ((i + j) % 2 == 1) {
+                }
+                else if ((i + j) % 2 == 1) {
                     System.out.print("\u25FC ");
                 } else System.out.print("\u25FB ");
             }
@@ -73,7 +77,7 @@ public class Tablero {
 
     public boolean hayPieza(int fila, int columna) {
         boolean respuesta = false;
-        if (tablero[fila][columna] != null) {
+        if (tablero[fila][columna] != null ) {
             respuesta = true;
         }
         return respuesta;
@@ -128,26 +132,26 @@ public class Tablero {
             }
         } else if (mov.esDiagonal()) {
             if ((mov.getPosInicial().getFila() > mov.getPosFinal().getFila()) && (mov.getPosInicial().getColumna() < mov.getPosFinal().getColumna())) {  //fila decrece y columan crece
-                for (int i = mov.getPosInicial().getFila() - 1, j = mov.getPosInicial().getColumna(); i > mov.getPosFinal().getFila() && !salir; i--, j++) {
+                for (int i = mov.getPosInicial().getFila() - 1, j = mov.getPosInicial().getColumna()+1; i > mov.getPosFinal().getFila() && !salir; i--, j++) {
                     if (hayPieza(i, j)) {
                         salir = true;
                     }
                 }
             } else if ((mov.getPosInicial().getFila() > mov.getPosFinal().getFila()) && (mov.getPosInicial().getColumna() > mov.getPosFinal().getColumna())) {
-                for (int i = mov.getPosInicial().getFila() - 1, j = mov.getPosInicial().getColumna(); i > mov.getPosFinal().getFila() && !salir; i--, j--) {
+                for (int i = mov.getPosInicial().getFila() - 1, j = mov.getPosInicial().getColumna()-1; i > mov.getPosFinal().getFila() && !salir; i--, j--) {
                     if (hayPieza(i, j)) {
                         salir = true;
                     }
                 }
             } else if ((mov.getPosInicial().getFila() < mov.getPosFinal().getFila()) && (mov.getPosInicial().getColumna() > mov.getPosFinal().getColumna())) {
-                for (int i = mov.getPosInicial().getFila() + 1, j = mov.getPosInicial().getColumna(); i < mov.getPosFinal().getFila() && !salir; i++, j--) {
+                for (int i = mov.getPosInicial().getFila() + 1, j = mov.getPosInicial().getColumna()-1; i < mov.getPosFinal().getFila() && !salir; i++, j--) {
                     if (hayPieza(i, j)) {
                         salir = true;
                     }
                 }
 
             } else if ((mov.getPosInicial().getFila() < mov.getPosFinal().getFila()) && (mov.getPosInicial().getColumna() < mov.getPosFinal().getColumna())) {
-                for (int i = mov.getPosInicial().getFila() + 1, j = mov.getPosInicial().getColumna(); i < mov.getPosFinal().getFila() && !salir; i++, j++) {
+                for (int i = mov.getPosInicial().getFila() + 1, j = mov.getPosInicial().getColumna()+1; i < mov.getPosFinal().getFila() && !salir; i++, j++) {
                     if (hayPieza(i, j)) {
                         salir = true;
                     }

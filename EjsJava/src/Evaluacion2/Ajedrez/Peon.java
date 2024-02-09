@@ -23,19 +23,36 @@ public class Peon extends Pieza {
      */
     @Override
     public boolean validoMovimiento(Movimiento mov, Tablero tablero) {
+        boolean respuesta = false;
+        if (color.equalsIgnoreCase("B") && tablero.hayPieza(mov.getPosFinal().getFila(), mov.getPosFinal().getColumna()) && (mov.esDiagonal() && mov.saltoVertical()== 1)) {
+            respuesta = true;
+        } else if (color.equalsIgnoreCase("N") && tablero.hayPieza(mov.getPosFinal().getFila(), mov.getPosFinal().getColumna()) && (mov.esDiagonal() && mov.saltoVertical() == -1)) {
+            respuesta = true;
+        } else if (color.equalsIgnoreCase("B") && !tablero.hayPieza(mov.getPosFinal().getFila(), mov.getPosFinal().getColumna()) && mov.getPosInicial().getFila() == 1 && (mov.saltoVertical() == 1 || mov.saltoVertical() == 2) && !mov.esDiagonal()) {
+            respuesta = true;
+        } else if (color.equalsIgnoreCase("N") && !tablero.hayPieza(mov.getPosFinal().getFila(), mov.getPosFinal().getColumna()) && mov.getPosInicial().getFila() == 6 && (mov.saltoVertical() == -1 || mov.saltoVertical() == -2)&& !mov.esDiagonal()) {
+            respuesta = true;
+        } else if (color.equalsIgnoreCase("B") && !tablero.hayPieza(mov.getPosFinal().getFila(), mov.getPosFinal().getColumna()) && mov.saltoVertical() == 1 && !mov.esDiagonal()) {
+            respuesta = true;
+        } else if (color.equalsIgnoreCase("N") && !tablero.hayPieza(mov.getPosFinal().getFila(), mov.getPosFinal().getColumna()) && mov.saltoVertical() == -1 && !mov.esDiagonal()) {
+            respuesta = true;
+        }else
+            System.out.println("Movimiento no valido");
+        return respuesta;
+        /*
         if (color.equalsIgnoreCase("B")) {
-            if (tablero.hayPieza(mov.getPosFinal().getFila(),mov.getPosFinal().getColumna())) {
+            if (tablero.hayPieza(mov.getPosFinal().getFila(), mov.getPosFinal().getColumna())) {
                 return mov.saltoDiagonal() == 1;
             } else if (mov.getPosInicial().getFila() == 1) {
                 return mov.saltoVertical() == 1 || mov.saltoVertical() == 2;
-            } else return mov.saltoVertical()==1;
-        }else
-        if (tablero.hayPieza(mov.getPosFinal().getFila(),mov.getPosFinal().getFila())) {
+            } else return mov.saltoVertical() == 1;
+        } else if (tablero.hayPieza(mov.getPosFinal().getFila(), mov.getPosFinal().getFila())) {
             return mov.saltoDiagonal() == -1;
         } else if (mov.getPosInicial().getFila() == 6) {
             return mov.saltoVertical() == -1 || mov.saltoVertical() == -2;
         } else return mov.saltoVertical() == -1;
 
-
+ ç*/
     }
+
 }
