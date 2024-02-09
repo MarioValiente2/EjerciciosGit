@@ -39,20 +39,7 @@ public class Peon extends Pieza {
         }else
             System.out.println("Movimiento no valido");
         return respuesta;
-        /*
-        if (color.equalsIgnoreCase("B")) {
-            if (tablero.hayPieza(mov.getPosFinal().getFila(), mov.getPosFinal().getColumna())) {
-                return mov.saltoDiagonal() == 1;
-            } else if (mov.getPosInicial().getFila() == 1) {
-                return mov.saltoVertical() == 1 || mov.saltoVertical() == 2;
-            } else return mov.saltoVertical() == 1;
-        } else if (tablero.hayPieza(mov.getPosFinal().getFila(), mov.getPosFinal().getFila())) {
-            return mov.saltoDiagonal() == -1;
-        } else if (mov.getPosInicial().getFila() == 6) {
-            return mov.saltoVertical() == -1 || mov.saltoVertical() == -2;
-        } else return mov.saltoVertical() == -1;
 
- ç*/
     }
 
 }
