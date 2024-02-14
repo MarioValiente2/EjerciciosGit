@@ -1,9 +1,9 @@
 package Evaluacion2.Ajedrez;
 
+import java.util.Scanner;
+
 public class Tablero {
     Pieza tablero[][];
-
-
     /**
      * Es el constructor de esta clase (Tablero), no recibe ningun parametro, lo que hace es inicializar el atributo tablero [][].
      * En cada posicion del array crea una pieza.
@@ -11,46 +11,33 @@ public class Tablero {
     public Tablero() {
         tablero = new Pieza[8][8];
         tablero[0][0] = new Torre("B");
-
-        tablero[0][1] = new Caballo("B");
-        tablero[0][2] = new Alfil("B");
-        tablero[0][3] = new Dama("B");
-        tablero[0][4] = new Rey("B");/*
-        tablero[0][5] = new Alfil("B");
-        tablero[0][6] = new Caballo("B");*/
+        //tablero[0][1] = new Caballo("B");
+        //tablero[0][2] = new Alfil("B");
+        //tablero[0][3] = new Dama("B");
+        tablero[0][4] = new Rey("B");
+        //tablero[0][5] = new Alfil("B");
+        //tablero[0][6] = new Caballo("B");
         tablero[0][7] = new Torre("B");
-
-
-
-
         tablero[7][0] = new Torre("N");
         tablero[7][1] = new Caballo("N");
         tablero[7][2] = new Alfil("N");
         tablero[7][3] = new Dama("N");
-        tablero[7][4] = new Rey("N");/*
+        tablero[7][4] = new Rey("N");
         tablero[7][5] = new Alfil("N");
-        tablero[7][6] = new Caballo("N");*/
+        tablero[7][6] = new Caballo("N");
         tablero[7][7] = new Torre("N");
 
-
-
         for (int i = 1; i < 2; i++) {
-            for (int j = 0; j < tablero[1].length; j++) {
-                tablero[i][j] = new Peon("N");
-            }
-        }
-        for (int i = 6; i < 7; i++) {
             for (int j = 0; j < tablero[1].length; j++) {
                 tablero[i][j] = new Peon("B");
             }
         }
-
-
-
-
+        for (int i = 6; i < 7; i++) {
+            for (int j = 0; j < tablero[1].length; j++) {
+                tablero[i][j] = new Peon("N");
+            }
+        }
     }
-
-
     /**
      * Este metodo imprime el atributo tablero que es un array bidimensional empezando desde la ultima posicion hasta la primera.
      * En la posicion que no hay ninguna pieza pone un cuadrado blanco o negro respectivamente
@@ -239,4 +226,11 @@ public class Tablero {
         ponPieza(tablero[mov.getPosInicial().getFila()][mov.getPosInicial().getColumna()], mov.getPosFinal().getFila(), mov.getPosFinal().getColumna());
         quitaPieza(mov.getPosInicial());
     }
+    public String Coronar(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Que pieza quieres: DAMA, ALFIL, CABALLO o TORRE");
+        String ficha=scanner.next();
+        return ficha.toUpperCase();
+    }
+
 }

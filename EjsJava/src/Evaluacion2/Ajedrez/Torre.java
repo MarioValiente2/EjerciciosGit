@@ -1,6 +1,7 @@
 package Evaluacion2.Ajedrez;
 
 public class Torre extends Pieza {
+    private boolean mover;
     /**
      * Constructor que inicializa el nombre de la pieza y recibe el parametro color
      * @param color Este parametro solo puede tomar dos valores B o N
@@ -11,6 +12,7 @@ public class Torre extends Pieza {
         else nombre = "\u265C ";
     }
 
+
     /**
      * Este metodo dice que los movimientos posibles de la torre solo pueden ser horizontales o verticales
      * @param mov Este parametro esta compuesto por una posicion Inicial y otra final con la que determina el tipo de movimiento
@@ -19,8 +21,10 @@ public class Torre extends Pieza {
      */
     @Override
     public boolean validoMovimiento(Movimiento mov, Tablero tablero) {
-        return (mov.esVertical() || mov.esHorizontal());
+        return (mov.esVertical() || mov.esHorizontal())? mover : !mover;
     }
 
-
+    public boolean isMover() {
+        return mover;
+    }
 }

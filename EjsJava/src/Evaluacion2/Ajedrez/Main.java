@@ -26,10 +26,5 @@ public class Main {
                 tablero.pintarTablero();
             }
         } while (mov != null);
-        //validar la pieza de la pos inicial de mov, si puede o no puede hacer el mov
-
-        //enviar.jugada(jugada,);
-
-
     }
 }
