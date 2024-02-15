@@ -27,7 +27,7 @@ public class Peon extends Pieza {
     @Override
     public boolean validoMovimiento(Movimiento mov, Tablero tablero) {
         boolean respuesta = false;
-        if (color.equalsIgnoreCase("B") && mov.getPosInicial().getFila() == 6 && mov.getPosFinal().getFila() == 7 && ((!tablero.hayPieza(mov.getPosFinal()) && mov.esVertical()) || (tablero.hayPieza(mov.getPosFinal()) && (mov.esDiagonal() && mov.saltoVertical() == 1)))) {
+        if (color.equalsIgnoreCase("B") && !tablero.hayPiezasEntre(mov) && mov.getPosInicial().getFila() == 6 && mov.getPosFinal().getFila() == 7 && ((!tablero.hayPieza(mov.getPosFinal()) && mov.esVertical()) || (tablero.hayPieza(mov.getPosFinal()) && (mov.esDiagonal() && mov.saltoVertical() == 1)))) {
             String ficha = tablero.Coronar();
             if (Objects.equals(ficha, "DAMA")) {
                 tablero.tablero[mov.getPosInicial().getFila()][mov.getPosInicial().getColumna()] = new Dama("B");
@@ -41,35 +41,37 @@ public class Peon extends Pieza {
             } else if (Objects.equals(ficha, "TORRE")) {
                 tablero.tablero[mov.getPosInicial().getFila()][mov.getPosInicial().getColumna()] = new Torre("B");
                 respuesta = true;
-            } else if (color.equalsIgnoreCase("N") && mov.getPosInicial().getFila() == 1 && ((!tablero.hayPieza(mov.getPosFinal()) && mov.esVertical()) || (tablero.hayPieza(mov.getPosFinal()) && (mov.esDiagonal() && mov.saltoVertical() == -1)))) {
-                String ficha = tablero.Coronar();
-                if (Objects.equals(ficha, "DAMA")) {
-                    tablero.tablero[mov.getPosInicial().getFila()][mov.getPosInicial().getColumna()] = new Dama("N");
-                    respuesta = true;
-                } else if (Objects.equals(ficha, "ALFIL")) {
-                    tablero.tablero[mov.getPosInicial().getFila()][mov.getPosInicial().getColumna()] = new Alfil("N");
-                    respuesta = true;
-                } else if (Objects.equals(ficha, "CABALLO")) {
-                    tablero.tablero[mov.getPosInicial().getFila()][mov.getPosInicial().getColumna()] = new Caballo("N");
-                    respuesta = true;
-                } else if (Objects.equals(ficha, "TORRE")) {
-                    tablero.tablero[mov.getPosInicial().getFila()][mov.getPosInicial().getColumna()] = new Torre("N");
-                    respuesta = true;
-                } else if (color.equalsIgnoreCase("B") && tablero.hayPieza(mov.getPosFinal().getFila(), mov.getPosFinal().getColumna()) && (mov.esDiagonal() && mov.saltoVertical() == 1)) {
-                    respuesta = true;
-                } else if (color.equalsIgnoreCase("N") && tablero.hayPieza(mov.getPosFinal().getFila(), mov.getPosFinal().getColumna()) && (mov.esDiagonal() && mov.saltoVertical() == -1)) {
-                    respuesta = true;
-                } else if (color.equalsIgnoreCase("B") && !tablero.hayPieza(mov.getPosFinal().getFila(), mov.getPosFinal().getColumna()) && mov.getPosInicial().getFila() == 1 && (mov.saltoVertical() == 1 || mov.saltoVertical() == 2) && !mov.esDiagonal()) {
-                    respuesta = true;
-                } else if (color.equalsIgnoreCase("N") && !tablero.hayPieza(mov.getPosFinal().getFila(), mov.getPosFinal().getColumna()) && mov.getPosInicial().getFila() == 6 && (mov.saltoVertical() == -1 || mov.saltoVertical() == -2) && !mov.esDiagonal()) {
-                    respuesta = true;
-                } else if (color.equalsIgnoreCase("B") && !tablero.hayPieza(mov.getPosFinal().getFila(), mov.getPosFinal().getColumna()) && mov.saltoVertical() == 1 && !mov.esDiagonal()) {
-                    respuesta = true;
-                } else if (color.equalsIgnoreCase("N") && !tablero.hayPieza(mov.getPosFinal().getFila(), mov.getPosFinal().getColumna()) && mov.saltoVertical() == -1 && !mov.esDiagonal()) {
-                    respuesta = true;
-                } else {
-                    System.out.println("Movimiento no valido");
-                }
-                return respuesta;
             }
+        } else if (color.equalsIgnoreCase("N") && !tablero.hayPiezasEntre(mov)  && mov.getPosInicial().getFila() == 1 && ((!tablero.hayPieza(mov.getPosFinal()) && mov.esVertical()) || (tablero.hayPieza(mov.getPosFinal()) && (mov.esDiagonal() && mov.saltoVertical() == -1)))) {
+            String ficha = tablero.Coronar();
+            if (Objects.equals(ficha, "DAMA")) {
+                tablero.tablero[mov.getPosInicial().getFila()][mov.getPosInicial().getColumna()] = new Dama("N");
+                respuesta = true;
+            } else if (Objects.equals(ficha, "ALFIL")) {
+                tablero.tablero[mov.getPosInicial().getFila()][mov.getPosInicial().getColumna()] = new Alfil("N");
+                respuesta = true;
+            } else if (Objects.equals(ficha, "CABALLO")) {
+                tablero.tablero[mov.getPosInicial().getFila()][mov.getPosInicial().getColumna()] = new Caballo("N");
+                respuesta = true;
+            } else if (Objects.equals(ficha, "TORRE")) {
+                tablero.tablero[mov.getPosInicial().getFila()][mov.getPosInicial().getColumna()] = new Torre("N");
+                respuesta = true;
+            }
+        } else if (color.equalsIgnoreCase("B") && tablero.hayPieza(mov.getPosFinal().getFila(), mov.getPosFinal().getColumna()) && (mov.esDiagonal() && mov.saltoVertical() == 1)) {
+            respuesta = true;
+        } else if (color.equalsIgnoreCase("N") && tablero.hayPieza(mov.getPosFinal().getFila(), mov.getPosFinal().getColumna()) && (mov.esDiagonal() && mov.saltoVertical() == -1)) {
+            respuesta = true;
+        } else if (color.equalsIgnoreCase("B") && !tablero.hayPieza(mov.getPosFinal().getFila(), mov.getPosFinal().getColumna()) && mov.getPosInicial().getFila() == 1 && (mov.saltoVertical() == 1 || mov.saltoVertical() == 2) && !mov.esDiagonal()) {
+            respuesta = true;
+        } else if (color.equalsIgnoreCase("N") && !tablero.hayPieza(mov.getPosFinal().getFila(), mov.getPosFinal().getColumna()) && mov.getPosInicial().getFila() == 6 && (mov.saltoVertical() == -1 || mov.saltoVertical() == -2) && !mov.esDiagonal()) {
+            respuesta = true;
+        } else if (color.equalsIgnoreCase("B") && !tablero.hayPieza(mov.getPosFinal().getFila(), mov.getPosFinal().getColumna()) && mov.saltoVertical() == 1 && !mov.esDiagonal()) {
+            respuesta = true;
+        } else if (color.equalsIgnoreCase("N") && !tablero.hayPieza(mov.getPosFinal().getFila(), mov.getPosFinal().getColumna()) && mov.saltoVertical() == -1 && !mov.esDiagonal()) {
+            respuesta = true;
+        } else {
+            System.out.println("Movimiento no valido");
         }
+        return respuesta;
+    }
+}

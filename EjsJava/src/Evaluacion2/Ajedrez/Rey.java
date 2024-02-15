@@ -1,7 +1,7 @@
 package Evaluacion2.Ajedrez;
 
 public class Rey extends Pieza {
-    private boolean enroque=true;
+    private boolean enroque = true;
 
     /**
      * Constructor que inicializa el nombre de la pieza y recibe el parametro color
@@ -30,7 +30,15 @@ public class Rey extends Pieza {
     @Override
     public boolean validoMovimiento(Movimiento mov, Tablero tablero) {
         boolean respuesta = false;
-        if (Math.abs(mov.getPosFinal().getFila()) - Math.abs(mov.getPosInicial().getFila()) == 1 || Math.abs(mov.getPosInicial().getFila()) - Math.abs(mov.getPosFinal().getFila()) == 1) {
+        if ((mov.getPosInicial().getFila() == 0 && mov.getPosInicial().getColumna() == 4) && (mov.getPosFinal().getFila() == 0 && mov.getPosFinal().getColumna() == 6) || (mov.getPosFinal().getFila() == 0 && mov.getPosFinal().getColumna() == 2) && isEnroque() && !tablero.hayPiezasEntre(mov)) {
+            if (((Torre)tablero.devuelvePieza(0, 7)).isMover() && (mov.getPosFinal().getFila() == 0 && mov.getPosFinal().getColumna() == 6)) {
+                respuesta = true;
+                tablero.mover( new Movimiento(new Posicion(mov.getPosInicial().getFila(),7),new Posicion(mov.getPosInicial().getFila(),5)));
+            } else if (((Torre)tablero.devuelvePieza(0, 0)).isMover() && (mov.getPosFinal().getFila() == 0 && mov.getPosFinal().getColumna() == 2)) {
+                respuesta = true;
+                tablero.mover( new Movimiento(new Posicion(mov.getPosInicial().getFila(),0),new Posicion(mov.getPosInicial().getFila(),3)));
+            }
+        } else if (Math.abs(mov.getPosFinal().getFila()) - Math.abs(mov.getPosInicial().getFila()) == 1 || Math.abs(mov.getPosInicial().getFila()) - Math.abs(mov.getPosFinal().getFila()) == 1) {
             mov.esVertical();
             respuesta = true;
             enroque = false;
@@ -38,11 +46,6 @@ public class Rey extends Pieza {
             mov.esHorizontal();
             respuesta = true;
             enroque = false;
-        } else if (color.equalsIgnoreCase("B") && (mov.getPosInicial().getFila() == 0 && mov.getPosInicial().getColumna() == 4) && (mov.getPosFinal().getFila() == 0 && mov.getPosFinal().getColumna() == 6) || (mov.getPosFinal().getFila() == 0 && mov.getPosFinal().getColumna() == 2) && isEnroque()) {
-            mov.esHorizontal();
-            respuesta = true;
-        } else if (color.equalsIgnoreCase("N") && (mov.getPosInicial().getFila() == 7 && mov.getPosInicial().getColumna() == 4) && ((mov.getPosFinal().getFila() == 7 && mov.getPosFinal().getColumna() == 6) || ((mov.getPosFinal().getFila() == 7 && mov.getPosFinal().getColumna() == 2))) && isEnroque()) {
-            respuesta = true;
         }
         return respuesta;
     }

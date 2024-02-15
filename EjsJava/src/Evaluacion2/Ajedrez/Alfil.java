@@ -21,6 +21,10 @@ public class Alfil extends Pieza{
      */
     @Override
     public boolean validoMovimiento(Movimiento mov,Tablero tablero) {
-        return mov.esDiagonal();
+        boolean respuesta = false;
+        if (mov.esDiagonal() && !tablero.hayPiezasEntre(mov)) {
+            respuesta = true;
+        }
+        return respuesta;
     }
 }

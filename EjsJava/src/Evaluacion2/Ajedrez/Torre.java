@@ -1,14 +1,15 @@
 package Evaluacion2.Ajedrez;
 
 public class Torre extends Pieza {
-    private boolean mover;
+    private boolean mover=true;
     /**
      * Constructor que inicializa el nombre de la pieza y recibe el parametro color
      * @param color Este parametro solo puede tomar dos valores B o N
      */
     public Torre(String color) {
         super(color);
-        if (color.equalsIgnoreCase("N")) nombre = "\u2656 ";
+        if (color.equalsIgnoreCase("N"))
+            nombre = "\u2656 ";
         else nombre = "\u265C ";
     }
 
@@ -21,7 +22,17 @@ public class Torre extends Pieza {
      */
     @Override
     public boolean validoMovimiento(Movimiento mov, Tablero tablero) {
-        return (mov.esVertical() || mov.esHorizontal())? mover : !mover;
+        boolean respuesta=false;
+        if (mov.esVertical() && !tablero.hayPiezasEntre(mov)){
+            mover=true;
+            respuesta=true;
+        } else if (mov.esHorizontal() && !tablero.hayPiezasEntre(mov) ) {
+            mover=true;
+            respuesta=true;
+        }
+
+        return respuesta;
+        //return (mov.esVertical() || mov.esHorizontal())? mover : !mover;
     }
 
     public boolean isMover() {
