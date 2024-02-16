@@ -12,7 +12,6 @@ public class Caballo extends Pieza{
         else
             nombre= "\u265E ";
     }
-
     /**
      *  Este metodo dice que los movimientos posibles del Caballo solo pueden ser salto horizontal  o salto vertical
      * @param mov Este parametro esta compuesto por una posicion Inicial y otra final con la que determina el tipo de movimiento

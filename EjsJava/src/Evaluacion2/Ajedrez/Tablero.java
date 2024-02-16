@@ -11,22 +11,22 @@ public class Tablero {
     public Tablero() {
         tablero = new Pieza[8][8];
         tablero[0][0] = new Torre("B");
-        //tablero[0][1] = new Caballo("B");
+        tablero[0][1] = new Caballo("B");
         //tablero[0][2] = new Alfil("B");
-        //tablero[0][3] = new Dama("B");
+        tablero[0][3] = new Dama("B");
         tablero[0][4] = new Rey("B");
         //tablero[0][5] = new Alfil("B");
         //tablero[0][6] = new Caballo("B");
         tablero[0][7] = new Torre("B");
         tablero[7][0] = new Torre("N");
-        tablero[7][1] = new Caballo("N");
-        tablero[7][2] = new Alfil("N");
+        //tablero[7][1] = new Caballo("N");
+        //tablero[7][2] = new Alfil("N");
         tablero[7][3] = new Dama("N");
         tablero[7][4] = new Rey("N");
-        tablero[7][5] = new Alfil("N");
-        tablero[7][6] = new Caballo("N");
+        //tablero[7][5] = new Alfil("N");
+        //tablero[7][6] = new Caballo("N");
         tablero[7][7] = new Torre("N");
-
+        /*
         for (int i = 1; i < 2; i++) {
             for (int j = 0; j < tablero[1].length; j++) {
                 tablero[i][j] = new Peon("B");
@@ -37,6 +37,7 @@ public class Tablero {
                 tablero[i][j] = new Peon("N");
             }
         }
+         */
     }
     /**
      * Este metodo imprime el atributo tablero que es un array bidimensional empezando desde la ultima posicion hasta la primera.
@@ -61,6 +62,33 @@ public class Tablero {
         System.out.println("  A  B  C D  E  F G  H");
     }
 
+    public Posicion encontrarRey(Juego turno){
+        boolean encontrado=false;
+        for (int i = 0; i < tablero.length && !encontrado; i++) {
+            for (int j = 0; j < tablero[i].length; j++) {
+                if (tablero[i][j]!=null && tablero[i][j].getColor().equalsIgnoreCase(turno.darTurno())){
+                    if (tablero[i][j] instanceof Rey){
+                        return new Posicion(i,j) ;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    public boolean Jaque( Juego juego){
+        boolean jaque=false;
+        Posicion rey= encontrarRey(juego);
+        for (int i = 0; i < tablero.length && !jaque ; i++) {
+            for (int j = 0; j < tablero[i].length ; j++) {
+                if (tablero[i][j]!=null  && !tablero[i][j].getColor().equalsIgnoreCase(juego.darTurno()) && tablero[i][j].validoMovimiento(new Movimiento(new Posicion(i,j),rey),this)){
+                    jaque=true;
+                }
+            }
+        }
+        return jaque;
+    }
+
     /**
      * En este metodo llamdo hayPieza a partir de estos dos parametros mira en la coordenada si hay alguna pieza o no
      *
@@ -68,7 +96,6 @@ public class Tablero {
      * @param columna
      * @return Devuelve respuesta, este booleano empieza en false  y si en esa posicion hay una pieza se vuelve true
      */
-
     public boolean hayPieza(int fila, int columna) {
         boolean respuesta = false;
         if (tablero[fila][columna] != null ) {

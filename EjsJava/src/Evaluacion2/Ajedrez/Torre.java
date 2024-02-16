@@ -30,11 +30,8 @@ public class Torre extends Pieza {
             mover=true;
             respuesta=true;
         }
-
         return respuesta;
-        //return (mov.esVertical() || mov.esHorizontal())? mover : !mover;
     }
-
     public boolean isMover() {
         return mover;
     }

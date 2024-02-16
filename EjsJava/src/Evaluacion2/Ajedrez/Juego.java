@@ -72,7 +72,6 @@ public class Juego {
             int filaFinal = jugada.charAt(3) - 49;
             int columnaInicial = jugada.charAt(0) - 65;
             int columnaFinal = jugada.charAt(2) - 65;
-            //chequeo
             if (!(estaRango(filaInicial)) || !(estaRango(filaFinal)) || !(estaRango(columnaInicial)) || !(estaRango(columnaFinal)))
                 System.out.println("Jugada Inválida. El formato debe ser del tipo A1A2 (A..H, 1..8)");
             else if (!tablero.hayPieza(filaInicial, columnaInicial)) {
@@ -81,8 +80,9 @@ public class Juego {
                 System.out.println("No puedes mover la pieza del contrario");
             } else if (tablero.hayPieza(filaFinal, columnaFinal) && tablero.devuelvePieza(filaFinal, columnaFinal).color.equalsIgnoreCase(elTurno)) {
                 System.out.println("No te comas tus piezas");
-            } else {//válido
+            } else {
                 nuevo = new Movimiento(new Posicion(filaInicial, columnaInicial), new Posicion(filaFinal, columnaFinal));
+                tablero.Jaque(this);
             }
         }
         return nuevo;

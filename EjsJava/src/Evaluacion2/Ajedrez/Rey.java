@@ -30,11 +30,12 @@ public class Rey extends Pieza {
     @Override
     public boolean validoMovimiento(Movimiento mov, Tablero tablero) {
         boolean respuesta = false;
-        if ((mov.getPosInicial().getFila() == 0 && mov.getPosInicial().getColumna() == 4) && (mov.getPosFinal().getFila() == 0 && mov.getPosFinal().getColumna() == 6) || (mov.getPosFinal().getFila() == 0 && mov.getPosFinal().getColumna() == 2) && isEnroque() && !tablero.hayPiezasEntre(mov)) {
-            if (!((Torre) tablero.devuelvePieza(0, 7)).isMover() && (mov.getPosFinal().getFila() == 0 && mov.getPosFinal().getColumna() == 6)) {
+
+        if (((mov.getPosInicial().getColumna() == 4)  && (mov.getPosFinal().getColumna() == 6)  ||  (mov.getPosInicial().getColumna() == 4)  && (mov.getPosFinal().getColumna() == 2)) && isEnroque() && !tablero.hayPiezasEntre(mov)) {
+            if (!((Torre) tablero.devuelvePieza(mov.getPosInicial().getFila(), 7)).isMover() && mov.getPosInicial().getColumna() < mov.getPosFinal().getColumna()) {
                 respuesta = true;
                 tablero.mover( new Movimiento(new Posicion(mov.getPosInicial().getFila(),7),new Posicion(mov.getPosInicial().getFila(),5)));
-            } else if (!((Torre) tablero.devuelvePieza(0, 0)).isMover() && (mov.getPosFinal().getFila() == 0 && mov.getPosFinal().getColumna() == 2)) {
+            } else if (!((Torre) tablero.devuelvePieza(mov.getPosInicial().getFila(), 0)).isMover() && mov.getPosInicial().getColumna() > mov.getPosFinal().getColumna()) {
                 respuesta = true;
                 tablero.mover( new Movimiento(new Posicion(mov.getPosInicial().getFila(),0),new Posicion(mov.getPosInicial().getFila(),3)));
             }

@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-
         Scanner scanner = new Scanner(System.in);
         Tablero tablero = new Tablero();
         tablero.pintarTablero();
@@ -21,9 +20,9 @@ public class Main {
                 mov = enviar.jugada(jugada, tablero);
             } while (mov == null);
             if (tablero.devuelvePieza(mov.getPosInicial()).validoMovimiento(mov, tablero)) {
-                tablero.mover(mov);
-                enviar.cambiarTurno();
-                tablero.pintarTablero();
+                    tablero.mover(mov);
+                    enviar.cambiarTurno();
+                    tablero.pintarTablero();
             }
         } while (mov != null);
     }
